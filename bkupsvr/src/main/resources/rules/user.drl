@@ -1,0 +1,12 @@
+package rules
+
+//list any import classes here
+import com.bbi.fam.model.User;
+import com.bbi.fam.exception.FamSystemException;
+
+rule "UserValidation"
+	when
+		User(firstName == '' || lastName == '' || password == '')
+	then
+		throw new FamSystemException("firstName, lastName, password are required fields");
+end

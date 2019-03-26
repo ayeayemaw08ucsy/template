@@ -1,0 +1,112 @@
+<div class="container mat-elevation-z2">
+  <div class="form" style="background-color: #f0f6f9;min-height: 35px!important;">
+    <div>
+      <!--menu label need to change.-->
+      <label class="canvas-title">{{menuModuleName}} Assets</label>
+    </div>
+  </div>
+  <form class="mat-dialog-content" #formControl="ngForm">
+    <div class="form" style="background-color: #1789ea;min-height: 35px!important;">
+      <span style="color: #fff;font-size: 14px;">
+        <label style="margin-right: 5px;">Entity ID : </label>
+        <label style="margin-right: 25px;">{{fixedAssetMst.entity}}</label>
+        <label style="margin-right: 5px;"> Product Ref :</label>
+        <label style="margin-right: 5px;">{{fixedAssetMst.prodRefId}}</label>
+      </span>
+    </div>
+    <table>
+      <tr>
+        <td>
+          <div class="label-column">
+            <mat-label>Note1</mat-label>
+          </div>
+          <div class="data-column ">
+            <mat-form-field>
+                <div style="float:left;width:300%;">
+              <textarea matInput #inputstate class="form-control" [(ngModel)]="addlInfoMst.note1" name="note1"
+                maxlength="255" [disabled]="isUpdateField"></textarea>
+                </div>
+              <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+            </mat-form-field>
+          </div>
+        </td>
+      </tr>
+      <tr>
+          <td>
+            <div class="label-column">
+              <mat-label>Note2</mat-label>
+            </div>
+            <div class="data-column ">
+              <mat-form-field>
+                  <div style="float:left;width:300%;">
+                <textarea matInput #inputstate class="form-control" [(ngModel)]="addlInfoMst.note2" name="note2"
+                  maxlength="255" [disabled]="isUpdateField"></textarea>
+                  </div>
+                <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+              </mat-form-field>
+            </div>
+          </td>
+        </tr>
+        <tr>
+            <td>
+              <div class="label-column">
+                <mat-label>Note3</mat-label>
+              </div>
+              <div class="data-column ">
+                <mat-form-field>
+                    <div style="float:left;width:300%;">
+                  <textarea matInput #inputstate class="form-control" [(ngModel)]="addlInfoMst.note3" name="note3"
+                    maxlength="255" [disabled]="isUpdateField"></textarea>
+                    </div>
+                  <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+                </mat-form-field>
+              </div>
+
+            </td>
+          </tr>
+          <tr>
+              <td>
+                <div class="label-column">
+                  <mat-label>Note4</mat-label>
+                </div>
+                <div class="data-column ">
+                  <mat-form-field>
+                      <div style="float:left;width:300%;">
+                    <textarea matInput #inputstate class="form-control" [(ngModel)]="addlInfoMst.note4" name="note4"
+                      maxlength="255" [disabled]="isUpdateField"></textarea>
+                      </div>
+                    <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+                  </mat-form-field>
+                </div>
+                
+              </td>
+            </tr>
+    </table>
+
+    <div class="fixedasset-btn-layout">
+      <div style="float: left">
+        <button mat-raised-button tabindex="-1" (click)="deleteEntry()" class="btn-left" *ngIf=" menuModuleName === 'Update' && subMenuModuleName !== 'Approve' && fixedAssetStatus !== 'Approval'   && moduleName !== 'Amend' && moduleName !== 'Register'">
+          <mat-icon aria-label="delete update entry" svgIcon="faDeleteEntry"></mat-icon>Delete Update Entry
+        </button>
+
+        <button mat-raised-button tabindex="-1" (click)="deleteEntry()" class="btn-left" *ngIf=" menuModuleName === 'Dispose' && subMenuModuleName !== 'Approve' && fixedAssetStatus !== 'Approval'   && moduleName !== 'Amend' && moduleName !== 'Register'">
+          <mat-icon aria-label="deleteDisposeEntry" svgIcon="faDeleteEntry"></mat-icon>Delete Dispose Entry
+        </button>
+        <button mat-raised-button tabindex="-2" (click)="back()" class="btn-back">
+          <mat-icon aria-label="Back" svgIcon="faBack"></mat-icon>Back
+        </button>
+      </div>
+      <div style="float: right;">
+        <!-- <button mat-raised-button tabindex="-1" (click)="saveDraftDispose()" class="btn-right" *ngIf="menuModuleName !== 'Dispose'   && moduleName !== 'Amend' && moduleName !== 'Register'">
+          <mat-icon aria-label="Save Draft" svgIcon="faSaveDraft"></mat-icon>Save Draft
+        </button> -->
+        <button mat-raised-button tabindex="-1" (click)="saveDraft()" class="btn-right" *ngIf="menuModuleName === 'Update' && subMenuModuleName !== 'Approve' && fixedAssetStatus !== 'Approval'  && moduleName !== 'Amend' && moduleName !== 'Register'">
+          <mat-icon aria-label="Save Draft" svgIcon="faSaveDraft"></mat-icon>Save Draft
+        </button>
+        <button mat-raised-button (click)="goToNextPage4()" class="btn-right">
+          <mat-icon aria-label="Next" svgIcon="faNext"></mat-icon>Next
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

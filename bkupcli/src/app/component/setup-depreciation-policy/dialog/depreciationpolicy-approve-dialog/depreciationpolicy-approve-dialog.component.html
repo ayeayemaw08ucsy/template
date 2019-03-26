@@ -1,0 +1,118 @@
+<div class="container">
+    <div class="dialog-header" style="height: 30px;    padding-left: 10px;">
+      <h5 mat-dialog-title style="margin-top: 3px;font-size: 16px;">Approve Depreciation Policy</h5>
+    </div>
+  
+    <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+      <div style="padding: 0px 20px 20px 20px;">
+        <table>
+          <tr>
+            <td>
+              <mat-label>Asset Type</mat-label>
+            </td>
+            <td style="padding-right: 24px;">
+              <div class="from">
+                <mat-form-field >
+                    <input matInput readonly="true" #inputstate class="form-control" [(ngModel)]="data.assetType" name="assetType">
+                    <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+                  </mat-form-field>
+              </div>
+            </td>
+            <td>
+              <mat-label>Asset Sub Type</mat-label>
+            </td>
+            <td>
+              <div class="from">
+                <mat-form-field >
+                    <input matInput readonly="true" #inputstate class="form-control" [(ngModel)]="data.assetSubType" name="assetSubType">
+                  <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+                 </mat-form-field>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+  
+            </td>
+            <td>
+  
+            </td>
+            <td>
+              <mat-label>Frequency</mat-label>
+            </td>
+            <td>
+              <div class="from">
+                <mat-form-field >
+                    <input matInput readonly="true" #inputstate class="form-control" [(ngModel)]="data.depCollFrequency" name="depCollFrequency">
+                 <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+                </mat-form-field>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+  
+            </td>
+            <td>
+  
+            </td>
+            <td>
+              <mat-label>Method</mat-label>
+            </td>
+            <td>
+              <div class="from">
+                <mat-form-field >
+                    <input  matInput readonly="true" #inputstate class="form-control" [(ngModel)]="data.depMethod" name="depMethod">
+                    <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+                 </mat-form-field>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+  
+            </td>
+            <td>
+  
+            </td>
+            <td>
+              <mat-label>Depreication Rate (%)</mat-label>
+            </td>
+            <td>
+              <div class="form">
+                <mat-form-field >
+                  <input matInput readonly="true" matInput type="number" #inputstate class="form-control" [(ngModel)]="data.depRate" name="depRate" required>
+                  <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+  
+            </td>
+            <td>
+  
+            </td>
+            <td>
+              <mat-label>Depreication Useful Life (Year)</mat-label>
+            </td>
+            <td>
+              <div class="form">
+                <mat-form-field >
+                  <input matInput  readonly="true" type="number" #inputstate class="form-control" [(ngModel)]="data.depUsefulLife"
+                    name="depUsefulLife" required>
+                  <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+                </mat-form-field>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+  
+      <div style="text-align:center;padding-bottom: 5px;padding-top: 5px; padding-right: 10px;background-color: #f0f6f9;">
+          <button mat-raised-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+          <button mat-raised-button [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1"  (click)="confirmApprove()" style="margin-right: 5px;">Approve</button>
+      </div>
+    </form>
+  </div>

@@ -1,0 +1,6 @@
+<mat-form-field color="accent">
+  <mat-select [(ngModel)]="selectedCode" placeholder="Select One Type of Code" (selectChange)="vendorCodeChangeAction">
+   <mat-option *ngFor="let v of vendors" [value]="v">{{v.codeValue}}</mat-option>
+  </mat-select>
+</mat-form-field>
+<!-- <p>Code Value Length: {{selectedCode ? selectedCode.shortDesc  : ""}}</p> -->

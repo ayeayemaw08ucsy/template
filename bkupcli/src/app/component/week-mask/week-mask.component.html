@@ -1,0 +1,35 @@
+<div class="form" style="background-color: #1789ea;min-height: 35px!important;"></div>
+<div class="cb-wrapper" [ngClass]="{'cb-vertival': !tmp }" layout="row" layout-align="start center">
+  <br>
+  <div style="padding-left: 10px;margin-top: -28px;margin-bottom: 10px;background-color: #f8f7ca; height: 30px;">
+    <label style="font-size: 12px;    font-weight: 500;">Previous Working Day :&nbsp;</label><label style="font-size: 12px;"> {{workingDay.previous | date : shortDate}}</label> | <label style="font-size: 12px;font-weight: 500;color: #1789ea;">Next Working Day :&nbsp;</label><label style="font-size: 12px;color: #1789ea;"> {{workingDay.next | date : shortDate}}</label>
+    <mat-slide-toggle [checked]="false" style="margin-left: 40%!important;pointer-events: none;font-size: 12px;">Non-Working Day</mat-slide-toggle>
+    <mat-slide-toggle [checked]="true" style="margin-left: 2%!important;pointer-events: none;font-size: 12px;">Working Day</mat-slide-toggle>
+    
+  </div>
+  <!-- <div>
+    <mat-slide-toggle [checked]="true" style="margin-left: 10px!important;pointer-events: none;">Working Days</mat-slide-toggle>
+    <mat-slide-toggle [checked]="false" style="margin-left: 10px!important;pointer-events: none;">Non-Working Days</mat-slide-toggle>
+  </div> -->
+  <br>
+  <mat-slide-toggle [(ngModel)]="policy.monday">Monday</mat-slide-toggle>
+
+  <hr>
+  <mat-slide-toggle [(ngModel)]="policy.tuesday">Tuesday</mat-slide-toggle>
+  <hr>
+  <mat-slide-toggle [(ngModel)]="policy.wednesday">Wednesday</mat-slide-toggle>
+  <hr>
+  <mat-slide-toggle [(ngModel)]="policy.thursday">Thursday</mat-slide-toggle>
+  <hr>
+  <mat-slide-toggle [(ngModel)]="policy.friday">Friday</mat-slide-toggle>
+  <hr>
+  <mat-slide-toggle [(ngModel)]="policy.saturday">Saturday</mat-slide-toggle>
+  <hr>
+  <mat-slide-toggle [(ngModel)]="policy.sunday">Sunday</mat-slide-toggle>
+  <br>
+  <div style="text-align: end;padding-bottom: 5px; padding-right: 10px;background-color: #f0f6f9;">
+    <button mat-raised-button (click)="updatePolicy()">
+      Save
+    </button>
+  </div>
+</div>

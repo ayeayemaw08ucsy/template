@@ -1,0 +1,32 @@
+<nav mat-tab-nav-bar  *ngIf="currentMenuName === 'Users'">
+  <a mat-tab-link (click)="ngOnInit()"
+     *ngFor="let link of usrNavLinks"
+     [routerLink]="[link.usrpath]"
+     routerLinkActive #rla="routerLinkActive"
+     [active]="rla.isActive" class="tablink">
+    <mat-icon svgIcon="{{link.icon}}"></mat-icon>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{link.label}}
+  </a>
+</nav> 
+
+<nav mat-tab-nav-bar *ngIf="currentMenuName === 'User Matrix'">
+  <a  mat-tab-link (click)="ngOnInit()"
+  *ngFor="let link of usrMatrixNavLinks"
+  [routerLink]="[link.matrixpath]"
+  routerLinkActive #rla="routerLinkActive"
+  [active]="rla.isActive" class="tablink">
+ <mat-icon svgIcon="{{link.icon}}"></mat-icon>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{link.label}}
+</a>
+</nav>
+
+<nav mat-tab-nav-bar  *ngIf="currentMenuName === 'User Limits'">
+  <a mat-tab-link (click)="ngOnInit()"
+  *ngFor="let link of usrLimitNavLinks"
+  [routerLink]="[link.usrpath]"
+  routerLinkActive #rla="routerLinkActive"
+  [active]="rla.isActive" class="tablink">
+ <mat-icon svgIcon="{{link.icon}}"></mat-icon>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{link.label}}
+</a>
+</nav>

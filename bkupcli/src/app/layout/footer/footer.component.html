@@ -1,0 +1,13 @@
+<div class="footer-div">
+    <br>
+</div>
+<mat-toolbar color="primary">
+    <span class="spacer footer-span" style="padding-left: 10px;">User: {{username}}</span>
+    <span class="footer-tab footer-span">Branch: {{branchCode}}</span>
+    <span class="footer-tab footer-span">Department: {{deptCode}}</span>
+    <span class="footer-tab "><label style="padding-right: 4px;">Last Login: </label> <label style="color:#1789ea;"> {{lastLogin | date:'dd-MMM-yyyy hh:mm:ss a'}}</label></span>
+    <span class="footer-tab"><label style="padding-right: 4px;">Last Failed Login: </label> <label style="color:#1789ea;">{{lastLoginFail | date:'dd-MMM-yyyy hh:mm:ss a'}}</label></span>
+    <span class="footer-tab"><label style="padding-right: 4px;">Next Password change: </label> <label style="color:#1789ea;">{{expire | date:'dd-MMM-yyyy hh:mm:ss a'}}</label></span>
+    <div><img src="../../../assets/BBI_LOGO.png" style="float: right;width: 30%;"></div>   
+    <span class="footer-tab"><label style="padding-right: 4px;">Version: </label> <label style="color:#1789ea;">fam-1.0.sp.0.0.1</label></span>
+</mat-toolbar>

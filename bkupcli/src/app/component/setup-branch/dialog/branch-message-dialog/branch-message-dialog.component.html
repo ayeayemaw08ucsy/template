@@ -1,0 +1,14 @@
+<div class="container">
+  <div id="banner" class="dialog-header">
+    <p><b>Branch</b></p>
+  </div>
+  <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+    <p><b>{{apiErr.message}}</b></p>
+
+  </form>
+  <div id="btn-panel" mat-dialog-actions>  
+      <div style="justify-content: center; align-items: center; display: flex;">
+      <button mat-raised-button class="btn" [type]="submit" [mat-dialog-close]="1">OK</button>
+      </div>  
+    </div>
+</div>

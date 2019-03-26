@@ -1,0 +1,243 @@
+<div class="container mat-elevation-z2">
+  <div class="form" style="background-color: #f0f6f9;min-height: 33px!important;padding-top: 1px;">
+  		<div>
+		<label class="canvas-title">{{menuModuleName}} Assets</label>
+		</div>
+		<div>
+	</div>
+  </div> 
+  <div>
+    <div class="form" style="background-color: #1789ea;min-height: 35px!important;max-height: 35px!important;">
+      <span style="color: #fff;font-size: 14px;">
+        <label style="margin-right: 5px;">Entity ID : </label>
+        <label style="margin-right: 25px;">{{fixedAssetMst.entity}}</label>
+        <label style="margin-right: 5px;"><span>Product Ref : </span></label>
+        <label style="margin-right: 5px;">{{fixedAssetMst.prodRefId}}</label>
+      </span>
+    </div>
+    <form class="mat-dialog-content" #formControl="ngForm">
+        <!-- <div class="form" style="background-color: #1789ea;min-height: 35px!important;"></div> -->
+        <table>
+          <tr>
+          <td>
+              <div class="label-column">
+               <mat-label>Invoice Amt</mat-label>
+              </div>
+              <div class="data-column">
+                <mat-form-field>
+                   <input matInput #inputstate class="form-control" [(ngModel)]="fixedAssetMst.invAmount" name="invAmount" maxlength="255" required [disabled]="true">
+                    <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                 </mat-form-field>
+              </div>
+            </td>
+            <td>
+              <div class="label-column">
+                <mat-label>Invoice Currency</mat-label>
+              </div>
+              <div class="data-column">
+                <mat-form-field>
+                  <input matInput #inputstate class="form-control" [(ngModel)]="fixedAssetMst.invCurrency" name="invCurrency" maxlength="255" required [disabled]="true">
+                  <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+              </div>
+            </td>
+            <td>
+              <div class="label-column">
+                <mat-label>Invoice Date</mat-label>
+              </div>
+              <div class="data-column">
+                <mat-form-field>
+                  <input matInput [matDatepicker]="invDate" [value]="invoiceDate"  [(ngModel)]="invoiceDate" name="invoiceDate" class="dt_picker" required disabled>
+                  <mat-datepicker-toggle matSuffix [for]="invDate" style="margin-left: -15px;"></mat-datepicker-toggle>
+                  <mat-datepicker #invDate></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </td>
+            <td>
+              <div class="label-column">
+                <mat-label>Invoice Ref</mat-label>
+              </div>
+              <div class="data-column">
+                 <mat-form-field>
+                    <input matInput #inputstate class="form-control" [(ngModel)]="fixedAssetMst.invoiceRef" name="invoiceRef" maxlength="255" required [disabled]="true">
+                    <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                 </mat-form-field>
+              </div>
+          </td>
+          </tr>
+           <tr>
+            <td>
+              <div class="label-column">
+                <mat-label>Unit Price</mat-label>
+              </div>
+              <div class="data-column">
+                <mat-form-field>
+                  <input matInput #inputstate class="form-control" [(ngModel)]="fixedAssetMst.invUnitPrice" name="invUnitPrice" maxlength="255" required [disabled]="true">
+                  <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+              </div>
+            </td>
+            <td>
+              <div class="label-column">
+                <mat-label>Invoice Quantity</mat-label>
+              </div>
+              <div class="data-column">
+                <mat-form-field>
+                    <input matInput #inputstate class="form-control" [(ngModel)]="fixedAssetMst.invQuantity" name="invQuantity" maxlength="255" required [disabled]="true">
+                    <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+              </div>
+            </td>
+            <td>
+              <div class="label-column">
+                <mat-label>Serial Number</mat-label>
+              </div>
+              <div class="data-column">
+                <mat-form-field>
+                    <input matInput #inputstate class="form-control" [(ngModel)]="fixedAssetMst.serialNo" name="serialNo" maxlength="255"  [disabled]="isUpdateField" >
+                    <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+              </div>
+            </td>
+            <td>
+                <div class="label-column">
+                 </div>
+                <div class="data-column">
+                </div>
+            </td>
+          </tr>
+         <tr>
+            <td>
+              <div class="label-column">
+                <mat-label>Asset Type</mat-label>
+              </div>
+              <div class="data-column">
+                <mat-form-field>
+                      <input matInput #inputstate class="form-control" [(ngModel)]="fixedAssetMst.assetType" name="assetType" maxlength="255" required [disabled]="true">
+                      <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+              </div>
+            </td>
+            <td>
+              <div class="label-column">
+                <mat-label>Asset Sub Type</mat-label>
+              </div>
+              <div class="data-column">
+                <mat-form-field>
+                  <input matInput #inputstate class="form-control" [(ngModel)]="fixedAssetMst.assetSubType" name="assetSubType" maxlength="255" required  [disabled]="true">
+                  <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+              </div>
+            </td>
+            <td>
+              <div class="label-column">
+                <mat-label>Model Number</mat-label>
+              </div>
+              <div class="data-column">
+                <mat-form-field>
+                  <input matInput #inputstate class="form-control" [(ngModel)]="fixedAssetMst.assetModel" name="assetModel" maxlength="255" [disabled]="isUpdateField">
+                  <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+              </div>
+            </td>
+            <td>
+             <div class="label-column">
+             </div>
+             <div class="data-column">
+             </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="label-column">
+                <mat-label>Branch</mat-label>
+              </div>
+              <div class="data-column">
+                <mat-form-field>
+                 <mat-select [(ngModel)]="selectedBranch" name="branchCode"  [ngModelOptions]="{standalone: true}" [disabled]="isUpdateField">
+                    <mat-option *ngFor="let b of branchLst" [value]="b.codeValue">{{b.codeValue}}</mat-option>
+                 </mat-select>
+                 <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+                </mat-form-field>
+              </div>
+            </td>
+            <td>
+              <div class="label-column">
+                <mat-label>Department</mat-label>
+              </div>
+              <div class="data-column">
+                <mat-form-field>
+                  <mat-select [(ngModel)]="selectedDep" placeholder="" name="depCode" [ngModelOptions]="{standalone: true}" [disabled]="isUpdateField">
+                    <mat-option *ngFor="let d of depLst" [value]="d.codeValue">{{d.codeValue}}</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+                </mat-form-field>
+              </div>
+            </td>
+            <td>
+              <div class="label-column">
+                <mat-label>Unique ID</mat-label>
+              </div>
+              <div class="data-column">
+                  <mat-form-field>
+                      <input matInput #inputstate class="form-control" [(ngModel)]="fixedAssetMst.uniqueId" name="uniqueId" maxlength="255" required [disabled]="isUpdateField" >
+                      <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+                  </mat-form-field>
+              </div>
+            </td>
+            <!-- <td>
+             <div class="label-column">
+             </div>
+             <div class="data-column">
+             </div>
+           </td> -->
+          </tr>
+          <tr>
+            <td>
+              <div class="label-column">
+                <mat-label>VendorCode</mat-label>
+              </div>
+              <div class="data-column">
+                <mat-form-field>
+                  <mat-select [(ngModel)]="selectedVendor" placeholder="" name="vendorCode" [ngModelOptions]="{standalone: true}" [disabled]="isUpdateField">
+                    <mat-option *ngFor="let v of vendorLst" [value]="v.codeValue">{{v.codeValue}}</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+              </mat-form-field>
+              </div>
+            </td>
+            <td>
+              <div class="label-column">
+                <mat-label>Vendor Name</mat-label>
+              </div>
+              <div class="data-column">
+                <mat-form-field>
+                  <input matInput #inputstate class="form-control" [(ngModel)]="fixedAssetMst.vendorName" name="vendorName" maxlength="35"  [disabled]="true">
+                  <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <div class="fixedasset-btn-layout">
+            <!-- <div style="float: left">
+             <button mat-raised-button tabindex="-1" (click)="saveDraft()" class="btn-left">
+                    <mat-icon aria-label="Save Draft" svgIcon="fam-deletered"></mat-icon>Delete Update Entry
+             </button>
+            </div> -->
+            <div style="float: right;">
+            <button mat-raised-button tabindex="-1" (click)="saveDraft()" class="btn-right" *ngIf="menuModuleName !== 'Dispose' && subMenuModuleName !== 'Approve' && fixedAssetStatus !== 'Approval' && !fixedAssetMst.draft">
+                 <mat-icon aria-label="Save Draft" svgIcon="faSaveDraft"></mat-icon>Save Draft
+            </button>
+<!--<button mat-raised-button tabindex="-1" (click)="saveDraftDispose()" class="btn-right" *ngIf="menuModuleName === 'Dispose' && !fixedAssetMst.draft">
+              <mat-icon aria-label="Save Draft" svgIcon="faSaveDraft"></mat-icon>Save Draft
+            </button> -->
+            <button mat-raised-button (click)="goToNextPage2()" class="btn-right">
+                 <mat-icon aria-label="Next"  svgIcon="faNext"></mat-icon>Next
+            </button>
+          </div>
+      </div>
+    </form>
+  </div>
+  </div>
+     

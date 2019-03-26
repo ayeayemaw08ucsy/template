@@ -1,0 +1,33 @@
+.mat-fab.mat-primary, .mat-flat-button.mat-primary, .mat-mini-fab.mat-primary, .mat-raised-button.mat-primary {
+    background-color: #1789ea;
+}
+
+:host ::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+    background-color: #1789ea;
+}
+
+:host ::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+    background-color: #9ecdf5;
+}
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0,0,0,.1);
+    width: 400px;
+}
+
+.cb-wrapper {
+  display: flex;
+  flex-wrap: wrap!important;
+  justify-content: left;
+}
+
+.mat-slide-toggle {
+    margin-left: 500px;
+}
+
+.cb-vertival {
+  flex-flow: column;
+}

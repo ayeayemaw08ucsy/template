@@ -1,0 +1,54 @@
+<nav mat-tab-nav-bar  *ngIf="currentMenuName === 'Business Date'">
+  <a mat-tab-link (click)="ngOnInit()"
+     *ngFor="let link of  holidayNavLinks"
+     [routerLink]="[link.holidaypath]"
+     routerLinkActive #rla="routerLinkActive"
+     [active]="rla.isActive" class="tablink">
+    <mat-icon svgIcon="{{link.icon}}"></mat-icon>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{link.label}}
+  </a>
+</nav> 
+
+<nav mat-tab-nav-bar *ngIf="currentMenuName === 'Depreciation Policy'">
+  <a  mat-tab-link (click)="ngOnInit()"
+  *ngFor="let link of dpNavLinks"
+  [routerLink]="[link.dppath]"
+  routerLinkActive #rla="routerLinkActive"
+  [active]="rla.isActive" class="tablink">
+ <mat-icon svgIcon="{{link.icon}}"></mat-icon>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{link.label}}
+</a>
+</nav>
+
+<nav mat-tab-nav-bar  *ngIf="currentMenuName === 'Codes'">
+  <a mat-tab-link (click)="ngOnInit()"
+  *ngFor="let link of codeNavLinks"
+  [routerLink]="[link.codepath]"
+  routerLinkActive #rla="routerLinkActive"
+  [active]="rla.isActive" class="tablink">
+ <mat-icon svgIcon="{{link.icon}}"></mat-icon>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{link.label}}
+</a>
+</nav>
+
+<nav mat-tab-nav-bar  *ngIf="currentMenuName === 'Vendors'">
+  <a mat-tab-link (click)="ngOnInit()"
+  *ngFor="let link of vendorNavLinks"
+  [routerLink]="[link.vendorpath]"
+  routerLinkActive #rla="routerLinkActive"
+  [active]="rla.isActive" class="tablink">
+ <mat-icon svgIcon="{{link.icon}}"></mat-icon>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{link.label}}
+</a>
+</nav>
+
+<nav mat-tab-nav-bar  *ngIf="currentMenuName === 'Branches'">
+  <a mat-tab-link (click)="ngOnInit()"
+  *ngFor="let link of branchNavLinks"
+  [routerLink]="[link.branchpath]"
+  routerLinkActive #rla="routerLinkActive"
+  [active]="rla.isActive" class="tablink">
+ <mat-icon svgIcon="{{link.icon}}"></mat-icon>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{link.label}}
+</a>
+</nav>

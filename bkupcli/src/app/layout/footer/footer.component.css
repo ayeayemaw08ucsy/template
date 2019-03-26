@@ -1,0 +1,25 @@
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+  height: 33px;
+  background: #ebf4fe;
+  color: #6a6161;
+  font-size: small;
+}
+
+.footer-tab {
+  font-weight: 400;
+  padding-left :30px;
+}
+
+.footer-div {
+  height: 10px;
+  background: #cce5fd;
+}
+
+.footer-span {
+  background-color: #1789ea;
+  margin-left: -15px;
+  margin-right: 15px;
+  padding-right: 20px;
+  color: #ffffff;
+}

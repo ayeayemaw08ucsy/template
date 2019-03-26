@@ -1,0 +1,93 @@
+/* Structure */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-top : 1%;
+}
+
+/* Toolbar */
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+/* Filter */
+
+.form {
+  min-height: 56px;
+  max-height: 56px;
+  display: flex;
+  align-items: center;
+  padding: 8px 24px 0;
+  font-size: 20px;
+  justify-content: space-between;
+  border-bottom: 1px solid transparent;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  flex-grow: 1;
+  margin-top: 8px;
+}
+
+/* Mat table */
+
+.no-results {
+  display: flex;
+  justify-content: center;
+  padding: 14px;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.mat-row:nth-child(even) {
+  background-color: #f0f6f9;
+}
+
+.mat-row:nth-child(odd) {
+  background-color: #e0eef9;
+}
+
+.mat-icon-button.mat-accent, .mat-stroked-button.mat-accent {
+    color: #1789ea;
+}
+
+:host ::ng-deep .mat-tab-label-active {
+    color: #ffffff!important;
+    background: #1789ea!important;
+}
+
+
+:host ::ng-deep .mat-ink-bar {
+    height: 0px;
+}
+
+
+:host ::ng-deep .mat-tab-label {
+    height: 48px;
+    padding: 0 24px;
+    cursor: pointer;
+    box-sizing: border-box;
+    opacity: .6;
+    min-width: 160px;
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    position: relative;
+    background-color: #ffffff;
+}
+:host ::ng-deep .mat-tab-labels {
+    background: #f0f6f9!important;
+    margin-top: -8px;
+}
+
+.csv-file-chooser-section {
+  padding: 10px;
+  margin: 5%;
+  border: 1px solid;
+  text-align: center;
+}
+

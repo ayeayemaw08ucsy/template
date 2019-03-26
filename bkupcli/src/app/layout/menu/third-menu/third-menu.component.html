@@ -1,0 +1,10 @@
+<nav mat-tab-nav-bar>
+  <a mat-tab-link (click)="ngOnInit()"
+     *ngFor="let link of navLinks"
+     [routerLink]="[link.path,link.menuName,subMenu]"
+     routerLinkActive #rla="routerLinkActive"
+     [active]="rla.isActive" class="tablink">
+    <mat-icon svgIcon="{{link.icon}}"></mat-icon>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{link.label}}
+  </a>
+</nav> 

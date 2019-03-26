@@ -1,0 +1,29 @@
+.tablink {
+    text-decoration: none;
+    margin-top: -8px;
+  }
+  
+  .mat-tab-label-active {
+    color: #1789ea !important;
+    background: #1789ea !important;
+    height: 56px;
+  }
+  
+  .mat-tab-label:hover {
+    color: #1789ea !important;
+    background: #1789ea !important;
+  }
+  
+  .mat-tab-link {
+    height: 56px;
+  }
+  
+  :host ::ng-deep .mat-ink-bar {
+    height: 0px;
+  }
+  
+  .mat-icon::ng-deep svg {
+    width: 100%;
+    height: 100%;
+    transform-origin: left top !important;
+  }

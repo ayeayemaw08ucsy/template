@@ -1,0 +1,373 @@
+<div class="container mat-elevation-z2">
+  <div class="form" style="background-color: #f0f6f9;min-height: 33px!important;padding-top: 1px;">
+    <div>
+      <label  class="canvas-title">New Register</label>
+    </div>
+  </div>
+    <div>
+        <div class="form" style="background-color: #1789ea;min-height: 35px!important;max-height: 35px!important;">
+          <span style="color: #fff;font-size: 14px;">
+            <label style="margin-right: 5px;">Entity ID : </label>
+            <label style="margin-right: 25px;">{{fixedAsset.entity}}</label>
+            <label style="margin-right: 5px;">Product Ref : </label>
+            <label style="margin-right: 5px;">{{fixedAsset.prodRefId}}</label>
+          </span>
+        </div>
+        <form #formControl="ngForm">
+            <div>
+                <table>
+                    <tr>
+                        <td colspan="2" style="text-align: left; padding-left: 20px; font-size: 13px;">
+                            <mat-label style="font-size: 13px; padding-right:9px;">Insurance</mat-label>
+                            <input type="radio" value="insurance" > Yes
+                            <input type="radio" value="insurance" > No
+                         
+                            
+                        </td>
+                         <td colspan="2" style="text-align: left; padding-left: 20px; font-size: 13px;">
+                            <mat-label style="font-size: 13px;padding-right: 9px;">Warranty</mat-label>
+                            <input type="radio" value="warranty" > Yes
+                            <input type="radio" value="warranty"> No
+                           
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form">
+                                <mat-label style="font-size: 13px; width: 60px;">Code</mat-label>
+                                <mat-form-field>
+                                    <mat-select [(ngModel)]="selectedInsurance" [ngModelOptions]="{standalone: true}" class="required-field" required>
+                                        <mat-option *ngFor="let v of vendors" [value]="v">{{v.vendorCode}}</mat-option>
+                                    </mat-select>
+                                   
+                                </mat-form-field>
+                            </div>
+                        </td> 
+                        <td>
+                            <div class="form">
+                                <mat-label style="font-size: 13px; width: 60px;">Name</mat-label>
+                                <mat-form-field>
+                                    <input matInput #inputstate class="form-control" [(ngModel)]="fixedAsset.addlInfoTnx.insuranceName" name="insuranceName">
+                                </mat-form-field>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form">
+                                <mat-label style="font-size: 13px; width: 60px;">Code</mat-label>
+                                <mat-form-field>
+                                    <mat-select [(ngModel)]="selectedWarranty" [ngModelOptions]="{standalone: true}" class="required-field" required>
+                                        <mat-option *ngFor="let v of vendors" [value]="v">{{v.vendorCode}}</mat-option>
+                                    </mat-select>
+                                    
+                                </mat-form-field>
+                            </div>
+                        </td> 
+                        <td>
+                            <div class="form">
+                                <mat-label style="font-size: 13px; width: 60px;">Name</mat-label>
+                                <mat-form-field>
+                                    <input matInput #inputstate class="form-control" [(ngModel)]="fixedAsset.addlInfoTnx.warrantyName" name="warrantyName">
+                                </mat-form-field>
+                            </div>
+                        </td>  
+                    </tr>
+                    <tr>
+                         <td colspan="2">
+                            <div class="form">
+                                <mat-label style="font-size: 13px; width: 60px;">Type</mat-label>
+                                <mat-form-field>
+                                    <input matInput #inputstate class="form-control" [(ngModel)]="fixedAsset.addlInfoTnx.insuranceType" name="insuranceType">
+                                </mat-form-field>
+                            </div>
+                        </td>  
+                         <td colspan="2">                            
+                            <div class="form">
+                                <mat-label style="font-size: 13px; width: 60px;">Type</mat-label>
+                                <mat-form-field>
+                                    <input matInput #inputstate class="form-control" [(ngModel)]="fixedAsset.addlInfoTnx.warrantyType" name="warrantyType">
+                                </mat-form-field>
+                            </div>
+                        </td>                                        
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form">
+                                <mat-label style="font-size: 13px; width: 60px;">From</mat-label>
+                                <mat-form-field>
+                                    <input matInput [(ngModel)]="fixedAsset.addlInfoTnx.insuranceFrom" name="insuranceFrom" [matDatepicker]="insuranceFromDatepicker" style="border: 1px solid #ced4da !important; border-radius: .25rem !important;min-height:28px;vertical-align: baseline; width: 170px;">
+                                    <mat-datepicker-toggle matSuffix [for]="insuranceFromDatepicker" style="margin-left: -15px;"></mat-datepicker-toggle>
+                                    <mat-datepicker #insuranceFromDatepicker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </td>  
+                        <td>
+                            <div class="form">
+                                <mat-label style="font-size: 13px; width: 60px;">To</mat-label>
+                                <mat-form-field>
+                                    <input matInput [(ngModel)]="fixedAsset.addlInfoTnx.insuranceTo" name="insuranceTo" [matDatepicker]="insuranceToDatepicker" style="border: 1px solid #ced4da !important; border-radius: .25rem !important;min-height:28px;vertical-align: baseline; width: 170px;">
+                                    <mat-datepicker-toggle matSuffix [for]="insuranceToDatepicker" style="margin-left: -15px;"></mat-datepicker-toggle>
+                                    <mat-datepicker #insuranceToDatepicker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </td>   
+                        <td>
+                            <div class="form">
+                                <mat-label style="font-size: 13px; width: 60px;">From</mat-label>
+                                <mat-form-field>
+                                    <input matInput [(ngModel)]="fixedAsset.addlInfoTnx.warrantyFrom" name="warrantyFrom" [matDatepicker]="warrantyFromDatepicker" style="border: 1px solid #ced4da !important; border-radius: .25rem !important;min-height:28px;vertical-align: baseline; width: 170px;">
+                                    <mat-datepicker-toggle matSuffix [for]="warrantyFromDatepicker" style="margin-left: -15px;"></mat-datepicker-toggle>
+                                    <mat-datepicker #warrantyFromDatepicker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </td>  
+                        <td>
+                            <div class="form">
+                                <mat-label style="font-size: 13px; width: 60px;">To</mat-label>
+                                <mat-form-field>
+                                    <input matInput [(ngModel)]="fixedAsset.addlInfoTnx.warrantyTo" name="warrantyTo" [matDatepicker]="warrantyToDatepicker" style="border: 1px solid #ced4da !important; border-radius: .25rem !important;min-height:28px;vertical-align: baseline; width: 170px;">
+                                    <mat-datepicker-toggle matSuffix [for]="warrantyToDatepicker" style="margin-left: -15px;"></mat-datepicker-toggle>
+                                    <mat-datepicker #warrantyToDatepicker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </td>                                              
+                    </tr>
+                    <br/>
+                    <tr>
+                        <td colspan="2" style="text-align: left; padding-left: 20px; font-size: 13px;">
+                            <mat-label style="font-size: 13px;padding-right: 9px;">Tax</mat-label>
+                            <input type="radio" value="tax"> Yes
+                            <input type="radio" value="tax"> No
+                            
+                            
+                        </td>
+                         <td colspan="2" style="text-align: left; padding-left: 20px; font-size: 13px;">
+                            <mat-label style="font-size: 13px;padding-right: 9px;">Support</mat-label>
+                            <input type="radio" value="support"> Yes
+                            <input type="radio" value="support"> No
+                         
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form">
+                                <mat-label style="font-size: 13px; width: 60px;">Code</mat-label>
+                                <mat-form-field>
+                                    <mat-select [(ngModel)]="selectedTax" [ngModelOptions]="{standalone: true}" required>
+                                        <mat-option *ngFor="let v of vendors" [value]="v">{{v.vendorCode}}</mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="formControl.invalid">{{getErrorMessage('Vendor Code')}}</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </td> 
+                        <td>
+                            <div class="form">
+                                <mat-label style="font-size: 13px; width: 60px;">Name</mat-label>
+                                <mat-form-field>
+                                    <input matInput #inputstate class="form-control" [(ngModel)]="fixedAsset.addlInfoTnx.taxName" name="taxName">
+                                </mat-form-field>
+                            </div>
+                        </td>  
+                         <td>
+                            <div class="form">
+                                <mat-label style="font-size: 13px; width: 60px;">Code</mat-label>
+                                <mat-form-field>
+                                    <mat-select [(ngModel)]="selectedSupport" [ngModelOptions]="{standalone: true}" class="required-field" required>
+                                        <mat-option *ngFor="let v of vendors" [value]="v">{{v.vendorCode}}</mat-option>
+                                    </mat-select>
+                                    
+                                </mat-form-field>
+                            </div>
+                        </td> 
+                        <td>
+                            <div class="form">
+                                <mat-label style="font-size: 13px; width: 60px;">Name</mat-label>
+                                <mat-form-field>
+                                    <input matInput #inputstate class="form-control" [(ngModel)]="fixedAsset.addlInfoTnx.supportName" name="supportName">
+                                </mat-form-field>
+                            </div>
+                        </td>                                             
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form">
+                                <mat-label style="font-size: 13px; width: 60px;">Type</mat-label>
+                                <mat-form-field>
+                                    <input matInput #inputstate class="form-control" [(ngModel)]="fixedAsset.addlInfoTnx.taxType" name="taxType">
+                                </mat-form-field>
+                            </div>
+                        </td> 
+                        <td>
+                            <div class="form">
+                                <mat-label style="font-size: 13px; width: 60px;">Tax Rate</mat-label>
+                                <mat-form-field>
+                                    <input matInput #inputstate class="form-control" [(ngModel)]="fixedAsset.addlInfoTnx.taxRate" name="taxRate">
+                                </mat-form-field>
+                            </div>
+                        </td> 
+                        <td colspan="2">
+                            <div class="form">
+                                <mat-label style="font-size: 13px; width: 60px;">Type</mat-label>
+                                <mat-form-field>
+                                    <input matInput #inputstate class="form-control" [(ngModel)]="fixedAsset.addlInfoTnx.supportType" name="supportType">
+                                </mat-form-field>
+                            </div>
+                        </td> 
+                    </tr>
+                    <tr>
+                         <td>
+                            <div class="form">
+                                <mat-label style="font-size: 13px; width: 60px;">Currency</mat-label>
+                                <mat-form-field>
+                                    <input matInput #inputstate class="form-control" [(ngModel)]="fixedAsset.addlInfoTnx.taxCurrency" name="taxCurrency">
+                                </mat-form-field>
+                            </div>
+                        </td> 
+                        <td>
+                            <div class="form">
+                                <mat-label style="font-size: 13px; width: 60px;">Tax Amount</mat-label>
+                                <mat-form-field style="margin-top: -4px;">
+                                    <input matInput #inputstate class="form-control" [(ngModel)]="fixedAsset.addlInfoTnx.taxAmount" name="taxAmount">
+                                </mat-form-field>
+                            </div>
+                        </td> 
+                        <td>
+                            <div class="form">
+                                <mat-label style="font-size: 13px; width: 60px;">From</mat-label>
+                                <mat-form-field>
+                                    <input matInput [(ngModel)]="fixedAsset.addlInfoTnx.supportFrom" name="supportFrom" [matDatepicker]="supportFromDatepicker" style="border: 1px solid #ced4da !important; border-radius: .25rem !important;min-height:28px;vertical-align: baseline; width: 170px;">
+                                    <mat-datepicker-toggle matSuffix [for]="supportFromDatepicker" style="margin-left: -15px;"></mat-datepicker-toggle>
+                                    <mat-datepicker #supportFromDatepicker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </td> 
+                        <td>
+                            <div class="form">
+                                <mat-label style="font-size: 13px; width: 60px;">To</mat-label>
+                                <mat-form-field>
+                                    <input matInput [(ngModel)]="fixedAsset.addlInfoTnx.supportTo" name="supportTo" [matDatepicker]="supportToDatepicker" style="border: 1px solid #ced4da !important; border-radius: .25rem !important;min-height:28px;vertical-align: baseline; width: 170px;">
+                                    <mat-datepicker-toggle matSuffix [for]="supportToDatepicker" style="margin-left: -15px;"></mat-datepicker-toggle>
+                                    <mat-datepicker #supportToDatepicker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </td>  
+                    </tr>
+                    <br/>
+                    <tr>
+                        <td colspan="2" style="text-align: left; padding-left: 20px; font-size: 13px;">
+                           <!-- <mat-label style="font-size: 13px; padding-left: 15px;">Financing</mat-label> --> 
+                            <mat-label style="font-size: 13px; padding-right: 9px">Financing</mat-label>  
+                            <input type="radio" value="tax" > Yes
+                            <input type="radio" value="tax" > No
+                                                     
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form">
+                                <mat-label style="font-size: 13px; width: 60px;">Code</mat-label>
+                                <mat-form-field>
+                                    <mat-select [(ngModel)]="selectedFinance" [ngModelOptions]="{standalone: true}" class="required-field" required>
+                                        <mat-option *ngFor="let v of vendors" [value]="v">{{v.vendorCode}}</mat-option>
+                                    </mat-select>
+                                    
+                                </mat-form-field>
+                            </div>
+                        </td> 
+                        <td>
+                            <div class="form">
+                                <mat-label style="font-size: 13px; width: 60px;">Name</mat-label>
+                                <mat-form-field>
+                                    <input matInput #inputstate class="form-control" [(ngModel)]="fixedAsset.addlInfoTnx.financeName" name="financeName">
+                                </mat-form-field>
+                            </div>
+                        </td> 
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form">
+                                <mat-label style="font-size: 13px; width: 60px;">Type</mat-label>
+                                <mat-form-field>
+                                    <input matInput #inputstate class="form-control" [(ngModel)]="fixedAsset.addlInfoTnx.financeType" name="financeType">
+                                </mat-form-field>
+                            </div>
+                        </td> 
+                        <td>
+                            <div class="form">
+                                <mat-label style="font-size: 13px; width: 60px;">Finance Rate</mat-label>
+                                <mat-form-field style="margin-top: -4px;">
+                                    <input matInput #inputstate class="form-control" [(ngModel)]="fixedAsset.addlInfoTnx.rate" name="rate">
+                                </mat-form-field>
+                            </div>
+                        </td> 
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form">
+                                <mat-label style="font-size: 13px; width: 60px;">Currency</mat-label>
+                                <mat-form-field>
+                                    <input matInput #inputstate class="form-control" [(ngModel)]="fixedAsset.addlInfoTnx.financeCurrency" name="financeCurrency">
+                                </mat-form-field>
+                            </div>
+                        </td> 
+                        <td>
+                            <div class="form">
+                                <mat-label style="font-size: 13px; width: 60px;">Amount</mat-label>
+                                <mat-form-field>
+                                    <input matInput #inputstate class="form-control" [(ngModel)]="fixedAsset.addlInfoTnx.financeAmt" name="financeAmt">
+                                </mat-form-field>
+                            </div>
+                        </td> 
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form">
+                                <mat-label style="font-size: 13px; width: 60px;">From</mat-label>
+                                <mat-form-field>
+                                    <input matInput [(ngModel)]="fixedAsset.addlInfoTnx.financeFrom" name="financeFrom" [matDatepicker]="financeFromDatepicker" style="border: 1px solid #ced4da !important; border-radius: .25rem !important;min-height:28px;vertical-align: baseline; width: 170px;">
+                                    <mat-datepicker-toggle matSuffix [for]="financeFromDatepicker" style="margin-left: -15px;"></mat-datepicker-toggle>
+                                    <mat-datepicker #financeFromDatepicker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </td> 
+                        <td>
+                            <div class="form">
+                                <mat-label style="font-size: 13px; width: 60px;">To</mat-label>
+                                <mat-form-field>
+                                    <input matInput [(ngModel)]="fixedAsset.addlInfoTnx.financeTo" name="financeTo" [matDatepicker]="financeToDatepicker" style="border: 1px solid #ced4da !important; border-radius: .25rem !important;min-height:28px;vertical-align: baseline; width: 170px;">
+                                    <mat-datepicker-toggle matSuffix [for]="financeToDatepicker" style="margin-left: -15px;"></mat-datepicker-toggle>
+                                    <mat-datepicker #financeToDatepicker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </td> 
+                    </tr>
+                </table>
+            </div>
+            <br/>
+            <div class="err-msg">
+                <app-messages></app-messages>
+            </div>
+        </form>
+        <br/>
+        <div class="btn-panel">
+            <div style="float: left">
+                <button mat-raised-button tabindex="-1" (click)="delete()" style="margin-right: 5px; font-size: 13px;" class="btn-left">
+                    <mat-icon aria-label="Delete Entry" svgIcon="faDeleteEntry"></mat-icon>Delete Entry
+                </button>
+                <button mat-raised-button tabindex="-1" (click)="back()" style="margin-right: 5px;height: 33px !important; font-size: 13px;">
+                    <mat-icon aria-label="Back" svgIcon="faBack"></mat-icon>Back
+                </button>
+            </div>
+            <div style="float: right;">
+                <button mat-raised-button tabindex="-1" [disabled]="!formControl.valid" (click)="saveDraft()" style="margin-right: 5px;height: 33px !important; font-size: 13px;">
+                    <mat-icon aria-label="Save Draft" svgIcon="faSaveDraft"></mat-icon>Save Draft
+                </button>
+                <button mat-raised-button (click)="register()" [disabled]="!formControl.valid" style="margin-right: 5px;height: 33px !important; font-size: 13px;">
+                    <mat-icon aria-label="Next" svgIcon="faSave"></mat-icon>Register
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

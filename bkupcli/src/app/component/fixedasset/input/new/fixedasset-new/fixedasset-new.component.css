@@ -1,0 +1,102 @@
+/* Structure */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3%;
+}
+
+/* Toolbar */
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+/* Filter */
+
+.form {
+  /* min-height: 56px;
+  max-height: 56px; */
+  display: flex;
+  align-items: center;
+  padding: 8px 24px 0;
+  font-size: 20px;
+  justify-content: space-between;
+  border-bottom: 1px solid transparent;
+}
+
+.mat-form-field {
+  font-size: 13px !important;
+  flex-grow: 1;
+  margin-top: 8px;
+}
+
+/* Mat table */
+
+.no-results {
+  display: flex;
+  justify-content: center;
+  padding: 14px;
+  font-size: 13px;
+  font-style: italic;
+}
+
+.mat-icon-button.mat-accent, .mat-stroked-button.mat-accent {
+    color: #1789ea;
+}
+
+:host ::ng-deep .mat-tab-label-active {
+    color: #ffffff!important;
+    background: #1789ea!important;
+}
+
+:host ::ng-deep .mat-ink-bar {
+    height: 0px;
+}
+
+.container[_ngcontent-c5] {
+    display: flex;
+    flex-direction: column;
+    background: #f8fbfe;
+    width: auto;
+}
+
+:host ::ng-deep .mat-tab-label {
+    height: 48px;
+    padding: 0 24px;
+    cursor: pointer;
+    box-sizing: border-box;
+    opacity: .6;
+    min-width: 160px;
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    position: relative;
+    background-color: #ffffff;
+}
+:host ::ng-deep .mat-tab-labels {
+    background: #f0f6f9!important;
+    margin-top: -8px;
+}
+
+.btn {
+    border-radius: 6px;
+    height: 30px;
+}
+
+[_ngcontent-pmm-6] {
+  /* background-color: #24B10B; */
+  border-radius: 15px;
+  border: 4px;
+  width: 70px;
+  text-align: center;
+  color: #fff;
+  font-weight: 500;
+}
+
+mat-label {
+    font-size: 13px !important;
+}
+

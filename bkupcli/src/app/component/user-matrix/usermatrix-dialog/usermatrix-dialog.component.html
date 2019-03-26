@@ -1,0 +1,82 @@
+<div class="container">
+
+  <div class="dialog-header" style="height: 30px;    padding-left: 10px;">
+    <h5 mat-dialog-title style="margin-top: 3px;font-size: 14px;">{{data.title}}</h5>
+     <label class="required-field-all">&nbsp;Required Field</label>
+  </div>
+  <form class="mat-dialog-content" #formControl="ngForm">
+
+    <div style="padding: 0px 20px 20px 20px;">
+      <table>
+        <tr>
+          <td>
+            <mat-label>Group Code</mat-label>
+          </td>
+          <td>
+            <div class="form">
+              <mat-form-field>
+                <mat-select [(ngModel)]="selectedGroup" placeholder=""  name="selectedGroup" class="required-field" required [disabled]="data.edit">
+                  <mat-option *ngFor="let g of groups" [value]="g.shortDesc">{{g.shortDesc}}</mat-option>
+                </mat-select>
+              
+              </mat-form-field>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-label>Region Code</mat-label>
+          </td>
+          <td>
+            <div class="form">
+              <mat-form-field>
+                <mat-select [(ngModel)]="selectedRegion" placeholder=""  name="selectedRegion" class="required-field" required>
+                  <mat-option *ngFor="let r of regions" [value]="r.shortDesc">{{r.shortDesc}}</mat-option>
+                </mat-select>
+             
+              </mat-form-field>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-label>Branch Code</mat-label>
+          </td>
+          <td>
+            <div class="form">
+              <mat-form-field>
+                <mat-select [(ngModel)]="selectedBranch" placeholder=""  name="selectedBranch" class="required-field" required>
+                  <mat-option *ngFor="let b of branchs" [value]="b.shortDesc">{{b.shortDesc}}</mat-option>
+                </mat-select>
+              
+              </mat-form-field>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-label>Department Code</mat-label>
+          </td>
+          <td>
+            <div class="form">
+              <mat-form-field>
+                <mat-select [(ngModel)]="selectedDept" placeholder=""  name="selectedDept" class="required-field" required>
+                  <mat-option *ngFor="let d of depts" [value]="d.shortDesc">{{d.shortDesc}}</mat-option>
+                </mat-select>
+             
+              </mat-form-field>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="err-msg">
+      <app-messages></app-messages>
+    </div>
+    <div style="text-align:center;padding-bottom: 5px;padding-top: 5px; padding-right: 10px;background-color: #f0f6f9;">
+      <button mat-raised-button [disabled]="formControl.invalid" (click)="confirmAdd()" style="margin-right: 5px;">Save</button>
+      <button mat-raised-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+    </div>
+
+  </form>
+</div>

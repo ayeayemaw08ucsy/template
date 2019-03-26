@@ -1,0 +1,56 @@
+ <!-- <nav mat-tab-nav-bar>
+  <a mat-tab-link
+     *ngFor="let link of navLinks"
+     [routerLink]="link.path"
+     routerLinkActive #rla="routerLinkActive"
+     [routerLinkActiveOptions] = "{exact: true}"
+     [active]="rla.isActive" class="tablink">
+     <mat-icon svgIcon="{{link.icon}}"></mat-icon>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{link.label}}
+  </a>
+ </nav> -->
+
+<mat-tab-group (selectedTabChange)="onTabClick($event)" dynamicHeight>
+      <mat-tab>
+        <ng-template mat-tab-label>
+            <div><mat-icon svgIcon="biz_date"></mat-icon> Business Day</div>
+        </ng-template>
+        <div>
+          <app-app-admin-common  [currentMenuName]="menuName"></app-app-admin-common>
+        </div>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+            <div><mat-icon svgIcon="policy"></mat-icon>&nbsp; Depreciation Policy</div>
+        </ng-template>
+         <div>
+          <app-app-admin-common  [currentMenuName]="menuName"></app-app-admin-common>
+      </div>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <div><mat-icon  svgIcon="code"></mat-icon>&nbsp; Code</div>
+        </ng-template>
+        <div>
+          <app-app-admin-common  [currentMenuName]="menuName"></app-app-admin-common>
+       </div>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <div><mat-icon  svgIcon="vendor"></mat-icon>&nbsp; Vendors</div> 
+        </ng-template>
+         <div>
+          <app-app-admin-common  [currentMenuName]="menuName"></app-app-admin-common>
+        </div>
+      </mat-tab>
+
+      <mat-tab>
+            <ng-template mat-tab-label>
+              <div><mat-icon  svgIcon="branch"></mat-icon>&nbsp; Branches</div>
+            </ng-template>
+            <div>
+              <app-app-admin-common  [currentMenuName]="menuName"></app-app-admin-common>
+            </div> 
+          </mat-tab>
+     </mat-tab-group> 
+      

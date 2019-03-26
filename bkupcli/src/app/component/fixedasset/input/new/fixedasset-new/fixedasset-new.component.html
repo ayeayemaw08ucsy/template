@@ -1,0 +1,227 @@
+<div class="container mat-elevation-z2">
+  <div class="form" style="background-color: #f0f6f9;min-height: 33px!important;padding-top: 1px;">
+  		<div>
+		<label class="canvas-title">New Register</label>
+		</div>
+		<div>
+		<label float="right" class="canvas-title required-field">&nbsp;Required Field</label>
+
+		</div>
+  </div> 
+  
+
+    <div>
+        <div class="form" style="background-color: #1789ea;min-height: 35px!important;max-height: 35px!important;">
+          <span style="color: #fff;font-size: 14px;">
+            <label style="margin-right: 5px;">Entity ID : </label>
+            <label>{{data.entity}}</label>
+          </span>
+        </div>
+        <form name="register" (ngSubmit)="submit()" #formControl="ngForm">
+            <div style="padding: 0px 20px 20px 20px;">
+                <!-- <div><p>{{data.apiError.error.message}}</p></div> -->
+                <table>
+                    <tr>
+                        <td>
+                            <mat-label style="font-size: 14px;">Invoice Ref</mat-label>
+                        </td>
+                        <td>
+                            <div class="form">
+                                <mat-form-field>
+                                  
+                                    <input matInput #inputstate class="form-control required-field" [(ngModel)]="data.invoiceRef" name="invoiceRef" required>
+                                    
+                                </mat-form-field>
+                            </div>
+                        </td>
+                        <td>
+                            <mat-label class="canvas-title ">Invoice Currency</mat-label>
+                        </td>
+                        <td>
+                            <div class="form">
+                                <mat-form-field>
+                                    <mat-select name="selectedCurrency" [(ngModel)]="selectedCurrency" class="required-field" required>
+                                        <mat-option *ngFor="let c of currencies" [value]="c.codeValue">{{c.codeValue}}</mat-option>
+                                    </mat-select>
+                                  
+                                </mat-form-field>
+                            </div>
+                        </td>
+                        <td>
+                            <mat-label>Invoice Amount</mat-label>
+                        </td>
+                        <td>
+                            <div class="form">
+                                <mat-form-field>
+                                    <input matInput #inputstate class="form-control  required-field" [(ngModel)]="data.invAmount" name="invAmount" required>
+                                </mat-form-field>
+                            </div>
+                        </td>                        
+                    </tr>
+                    <tr>
+                        <td>
+                            <mat-label>Invoice Date</mat-label>
+                        </td>
+                        <td>
+                            <div class="form ">
+                                <mat-form-field>                                    
+                                    <input matInput [(ngModel)]="data.invoiceDate" name="invoiceDate" [matDatepicker]="myDatepicker" [min]="minDate" required
+                                    style="border: 1px solid #ced4da !important; border-radius: .25rem !important;min-height:28px;vertical-align: baseline; border-left: 4px solid orange !important;">
+                                    <mat-datepicker-toggle matSuffix [for]="myDatepicker" style="margin-left: -10px;"></mat-datepicker-toggle>
+                                    <mat-datepicker #myDatepicker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </td>
+                        <td>
+                            <mat-label>Unit Price</mat-label>
+                        </td>
+                        <td>
+                            <div class="form">
+                                <mat-form-field>
+                                    <input matInput class="form-control required-field" [(ngModel)]="data.invUnitPrice" name="invUnitPrice" maxlength="35"  required>
+                                    
+                                </mat-form-field>
+                            </div>
+                        </td>
+                        <td>
+                            <mat-label>Invoice Quantity</mat-label>
+                        </td>
+                        <td>
+                            <div class="form">
+                                <mat-form-field>
+                                    <input matInput class="form-control required-field" [(ngModel)]="data.invQuantity" name="invQuantity" maxlength="35" pattern="^\d*$" required>
+                                    
+                                </mat-form-field>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <mat-label>Asset Type</mat-label>
+                        </td>
+                        <td>
+                            <div class="form">
+                                <mat-form-field>
+                                    <mat-select [(ngModel)]="selectedAssetType" name="assetTypes" (selectionChange)="assetTypeChangeAction($event)" class="required-field"  required="true">
+                                        <mat-option *ngFor="let at of assetTypes" [value]="at.codeValue">{{at.codeValue}}</mat-option>
+                                    </mat-select>
+                                    
+                                </mat-form-field>
+                            </div>
+                        </td>
+                        <td>
+                            <mat-label>Asset Sub Type</mat-label>
+                        </td>
+                        <td>
+                            <div class="form">
+                                <mat-form-field>
+                                    <mat-select [(ngModel)]="selectedAssetSubType" name="assetSubType" class="required-field" required>
+                                        <mat-option *ngFor="let ast of assetSubTypes" [value]="ast.codeValue">{{ast.codeValue}}</mat-option>
+                                    </mat-select>
+                                    
+                                </mat-form-field>
+                            </div>
+                        </td>
+                        <td>
+                            <mat-label>Model Number</mat-label>
+                        </td>
+                        <td>
+                            <div class="form">
+                                <mat-form-field>
+                                    <input matInput class="form-control" [(ngModel)]="data.assetModel" name="assetModel" maxlength="60" >
+                                </mat-form-field>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <mat-label>Branch</mat-label>
+                        </td>
+                        <td>
+                            <div class="form">
+                                <mat-form-field>
+                                    <mat-select [(ngModel)]="selectedBranch" name="branch" class="required-field" required>
+                                        <mat-option *ngFor="let b of branches" [value]="b.codeValue">{{b.codeValue}}</mat-option>
+                                    </mat-select>
+                                    
+                                </mat-form-field>
+                            </div>
+                        </td>
+                        <td>
+                            <mat-label>Department</mat-label>
+                        </td>
+                        <td>
+                            <div class="form">
+                                <mat-form-field>
+                                    <mat-select [(ngModel)]="selectedDept" name="department" class="required-field" required>
+                                        <mat-option *ngFor="let d of departments" [value]="d.codeValue">{{d.codeValue}}</mat-option>
+                                    </mat-select>
+                                   
+                                </mat-form-field>
+                            </div>
+                        </td>
+                        <td>
+                            <mat-label>Unique ID</mat-label>
+                        </td>
+                        <td>
+                            <div class="form">
+                                <mat-form-field>
+                                    <input matInput class="form-control" [(ngModel)]="data.uniqueId" name="uniqueId" maxlength="60" >
+                                </mat-form-field>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <mat-label>Vendor Code</mat-label>
+                        </td>
+                        <td>
+                            <div class="form ">
+                                <mat-form-field>
+                                    <mat-select [(ngModel)]="selectedVendor" name="vendor" class="required-field" required >
+                                        <mat-option *ngFor="let v of vendors" [value]="v.vendorCode" (onSelectionChange)="selectionChangeMethod($event, v)">{{v.vendorCode}}</mat-option>
+                                    </mat-select>
+                                   
+                                </mat-form-field>
+                            </div>
+                        </td>
+                        <td>
+                            <mat-label>Vendor Name</mat-label>
+                        </td>
+                        <td>
+                            <div class="form">
+                                <mat-form-field>
+                                    <input matInput #inputstate class="form-control" [(ngModel)]="data.vendorName" value="{{data.vendorName}}" name="vendorName" maxlength="35" disabled>
+                                </mat-form-field>
+                            </div>
+                        </td>
+                        <td>
+                            <mat-label>Serial Number</mat-label>
+                        </td>
+                        <td>
+                            <div class="form">
+                                <mat-form-field>
+                                    <input matInput class="form-control" [(ngModel)]="data.serialNo" name="serialNo" maxlength="35" >
+                                    <mat-error *ngIf="formControl.invalid">{{getErrorMessage('Serial Number')}}</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!-- <div class="err-msg">
+                <app-messages></app-messages>
+            </div> -->
+        </form>
+        <div style="padding-bottom: 3px;padding-top: 3px; padding-right: 10px;background-color: #f0f6f9;height: 40px !important;">
+            <div style="float: right;">
+            <button mat-raised-button tabindex="-1" [disabled]="!formControl.valid" (click)="saveDraft()" style="margin-right: 5px;height: 33px !important; font-size: 13px;">
+                 <mat-icon aria-label="Save Draft" svgIcon="faSaveDraft"></mat-icon>Save Draft
+            </button>
+            <button mat-raised-button (click)="next()" [disabled]="!formControl.valid" style="margin-right: 5px;height: 33px !important; font-size: 13px;">
+                 <mat-icon aria-label="Next" svgIcon="faNext"></mat-icon>Next
+            </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+.tablink {
+    text-decoration: none;
+}
+
+.mat-icon::ng-deep svg {
+    width: 50%;
+    height: 50%;
+  }
+  /* .mat-icon::ng-deep svg path
+{
+  fill: #FFFF;
+}  */
+
+
+.mat-tab-label-active::ng-deep {
+  color: #ffffff;
+  background: #1789ea!important;
+  opacity: 1 !important;
+  fill: #FFFF;
+}
+
+.mat-tab-label-container {
+  display: flex;
+  flex-grow: 1;
+  overflow: hidden;
+  z-index: 1;
+  max-height: 33px;
+}
+.mat-tab-labels {
+  display: flex;
+  height: 39px;
+}

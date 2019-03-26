@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="dialog-header" style="height: 30px;    padding-left: 10px;">
+    <h5 mat-dialog-title style="margin-top: 3px;font-size: 14px;">{{data.title}}</h5>
+    <label class="required-field-all">&nbsp;Required Field</label>
+  </div>
+
+  <form class="mat-dialog-content" #formControl="ngForm">
+
+    <div style="padding: 0px 20px 20px 20px;">
+      <table>
+        <tr>
+          <td>
+            <mat-label>Level Code</mat-label>
+          </td>
+          <td>
+            <div class="form">
+              <mat-form-field>
+                <mat-select [(ngModel)]="selectedLimit" placeholder="" name="selectedLimit" [disabled]="data.edit" class="required-field" required>
+                  <mat-option *ngFor="let l of limits" [value]="l" >{{l.shortDesc}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-label>Input Limit</mat-label>
+          </td>
+          <td>
+            <div class="form">
+              <mat-form-field>
+                <input matInput #inputstate class="form-control required-field" [(ngModel)]="data.inputLimit" name="imputLimit" required
+                  type="number" onkeydown="javascript: return event.keyCode == 189 ? false : true" onkeypress="javascript: return event.keyCode == 45 ? false : true">
+              </mat-form-field>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-label>Approve Limit</mat-label>
+          </td>
+          <td>
+            <div class="form">
+              <mat-form-field>
+                <input matInput #inputstate class="form-control required-field" [(ngModel)]="data.approveLimit" name="approveLimit" type="number"
+                  required onkeydown="javascript: return event.keyCode == 189 ? false : true" onkeypress="javascript: return event.keyCode == 45 ? false : true" onfocus="javascript: return event.keyCode == 69 ? false : true">
+              </mat-form-field>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="err-msg">
+      <app-messages></app-messages>
+    </div>
+    <div style="text-align:center;padding-bottom: 5px;padding-top: 5px; padding-right: 10px;background-color: #f0f6f9;">
+      <button mat-raised-button [disabled]="formControl.invalid" (click)="confirmAdd()" style="margin-right: 5px;">Save</button>
+      <button mat-raised-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+    </div>
+
+  </form>
+</div>

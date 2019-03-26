@@ -1,0 +1,28 @@
+<mat-sidenav-container class="all-wrap" fullscreen>
+  <div class="page-wrap">
+    <div style="top: 0; position: fixed;width: 100%;z-index: 1000;">
+      <app-header *ngIf="showHeadFoot"></app-header>
+      <app-menu *ngIf="showHeadFoot"></app-menu>
+    </div>
+    <div>
+        <main class="content" [style.padding-top]="showHeadFoot ? '150px' : '10px'">
+            <router-outlet></router-outlet>
+            <div (click)="onActivate()" class="btt-btn"><i class="material-icons">&#xE316;</i></div>
+        </main>
+    </div>
+    
+    <!--<div *ngIf="isLoginPage">
+      <p>
+        <strong>{{idleState}}</strong>
+      </p>
+      <p *ngIf="lastPing">
+        <small>Last keepalive ping
+          <strong>{{lastPing | amTimeAgo}}</strong>
+        </small>
+      </p>
+    </div>!-->
+    <div style="position: fixed;bottom: 0;width: 100%;">
+      <app-footer *ngIf="showHeadFoot"></app-footer>
+    </div>
+  </div>
+</mat-sidenav-container>

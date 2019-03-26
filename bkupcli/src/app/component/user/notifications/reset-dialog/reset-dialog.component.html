@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="dialog-header" style="height: 30px;    padding-left: 10px;">
+    <h5 mat-dialog-title style="margin-top: 3px;font-size: 16px;">Modify</h5>
+  </div>
+
+  <form class="mat-dialog-content" #formControl="ngForm">
+
+    <div style="padding: 0px 20px 20px 20px; justify-content: center; align-items: center; display: flex;">
+      <table>
+        <tr>
+          <td>
+            <mat-label>Username</mat-label>
+          </td>
+          <td>
+            <div class="form">
+              <mat-form-field>
+                <input matInput #inputstate class="form-control required-field" [(ngModel)]="data.username" name="username" maxlength="255" required readonly="true">
+           
+              </mat-form-field>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-label>New Password</mat-label>
+          </td>
+          <td>
+            <div class="form">
+              <mat-form-field>
+                <input matInput #inputstate class="form-control required-field" [(ngModel)]="data.password" name="password" maxlength="255" required type="password">
+             
+              </mat-form-field>
+            </div>
+          </td>
+          <td>
+            <div class="form">
+              <button mat-raised-button (click)="generatePassword() " style="margin-left: 5px; float: left;height: 28px;">
+                <label style="margin-top: -9px;">generate</label>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div style="text-align:center;padding-bottom: 5px;padding-top: 5px; padding-right: 10px;background-color: #f0f6f9;">
+      <button mat-raised-button (click)="onNoClick()" tabindex="-1">Cancel</button>&nbsp;&nbsp;
+      <button mat-raised-button [disabled]="!formControl.valid" (click)="stopEdit()" style="margin-right: 5px;" [mat-dialog-close]="1">Reset</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,117 @@
+<div class="container mat-elevation-z2">
+
+  <mat-tab-group dynamicHeight>
+    <mat-tab label="Vendor">
+      <div>
+        <div class="form" style="background-color: #1789ea;min-height: 35px!important;max-height: 35px!important;">
+          <span class="right">
+            <label style="color: #ffffff; font-size: 14px;">Search</label>
+            <input class="filter" #filter placeholder="Vendor Code, Short Description and Long Description">
+            <button mat-icon-button (click)="refresh()" style="float: right; margin-bottom: 7px; margin-right: 1%;">
+                <mat-icon>refresh</mat-icon>
+            </button>
+          </span>
+        </div>
+
+        <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+
+          <!-- <ng-container matColumnDef="vendorSeqId">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Vendor ID</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.vendorSeqId}}</mat-cell>
+          </ng-container> -->
+
+          <ng-container matColumnDef="vendorCode">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Code</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.vendorCode}}</mat-cell>
+          </ng-container>
+
+    
+          <ng-container matColumnDef="name1">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+            <mat-cell *matCellDef="let row"> <span class="cell-text">{{row.name1}}</span></mat-cell>
+          </ng-container>
+          
+          <!-- <ng-container matColumnDef="vendorDesc">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Description</mat-header-cell>
+            <mat-cell *matCellDef="let row"> <span class="cell-text">{{row.vendorDesc}}</span></mat-cell>
+          </ng-container> -->
+          
+                
+          <!-- <ng-container matColumnDef="name2">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Vendor Name (2)</mat-header-cell>
+            <mat-cell *matCellDef="let row"><span class="cell-text">{{row.name2}}</span></mat-cell>
+          </ng-container> -->
+		  
+		  <!-- <ng-container matColumnDef="address">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Address</mat-header-cell>
+            <mat-cell *matCellDef="let row"><span class="cell-text">{{row.address}}</span></mat-cell>
+          </ng-container> -->
+                
+          <!-- <ng-container matColumnDef="pinCode">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Pin Code</mat-header-cell>
+            <mat-cell *matCellDef="let row"><span class="cell-text">{{row.pinCode}}</span></mat-cell>
+          </ng-container> -->
+
+          <ng-container matColumnDef="phone">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Contact No</mat-header-cell>
+            <mat-cell *matCellDef="let row" mat-sort-cell><span class="cell-text">{{row.phone}}</span></mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+            <mat-cell *matCellDef="let row" mat-sort-cell><span class="cell-text">{{row.email}}</span></mat-cell>
+          </ng-container>
+		  
+		  <ng-container matColumnDef="country">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Country</mat-header-cell>
+            <mat-cell *matCellDef="let row" mat-sort-cell><span class="cell-text">{{row.countryDesc}}</span></mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="activeStatus">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
+              <mat-cell *matCellDef="let row" style="justify-content: center;"> 
+                  <label [ngStyle]="{'background-color': row.activeStatus === 'Y' ? '#24B10B': '#EA7979'}" _ngcontent-pmm-6>{{(row.activeStatus === 'Y') ? 'Active' : 'Inactive'}}</label>
+              </mat-cell>
+          </ng-container>
+
+          <!-- actions -->
+          <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef style="border-right: none !important;">
+                <!-- &nbsp; &nbsp; Edit &nbsp; &nbsp; Delete -->
+                Edit
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row; let i=index;" mat-sort-cell>
+              <button mat-icon-button    (click)="editData(i,row.vendorSeqId, row.vendorCode, row.vendorDesc,row.name1,row.name2, row.address, row.pinCode, row.phone, row.email, row.country, row.activeStatus, row.businessDate)">
+                <!-- <mat-icon aria-label="Edit">edit</mat-icon> -->
+                <mat-icon aria-label="Edit" svgIcon="fam-edit"></mat-icon>
+              </button>
+
+              <!-- <button mat-icon-button  (click)="deleteItem(i,row.vendorSeqId, row.vendorCode, row.vendorDesc,row.name1,row.name2, row.address1, row.address2, row.phone, row.email, row.country, row.activeStatus, row.businessDate)">
+                <mat-icon aria-label="Delete">delete</mat-icon>
+                <mat-icon aria-label="Delete" svgIcon="fam-deletered"></mat-icon>
+              </button> -->
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+
+
+        <div class="no-results" [style.display]="dataSource.renderedData.length == 0 ? '' : 'none'">
+          No results
+        </div>
+
+        <mat-paginator #paginator [length]="dataSource.filteredData.length" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+        </mat-paginator>
+      </div>
+      <div class="add-new-panel">
+        <button class="btn" mat-raised-button (click)="addNewVendor(vendor)">
+             Add New
+        </button>
+      </div>
+    </mat-tab>
+
+  </mat-tab-group>
+
+</div>

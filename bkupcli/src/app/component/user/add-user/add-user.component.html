@@ -1,0 +1,203 @@
+<div class="container mat-elevation-z2">
+  <div class="form" style="background-color: #f0f6f9;min-height: 35px!important;">
+    <div>
+      <label class="canvas-title">New User Register</label>
+    </div>
+    <div>
+		<label float="right" class="canvas-title required-field">&nbsp;Required Field</label>
+
+		</div>
+  </div>
+  <form class="mat-dialog-content" #formControl="ngForm">
+    <div class="form" style="background-color: #1789ea;min-height: 35px!important;"></div>
+    <table>
+      <tr>
+        <td>
+          <div class="label-column">
+            <mat-label>Full Name</mat-label>
+          </div>
+          <div class="data-column">
+            <mat-form-field>
+              <input matInput #inputstate class="form-control required-field" [(ngModel)]="data.firstName" name="firstName" maxlength="255" required>
+     
+            </mat-form-field>
+          </div>
+        </td>
+        <td>
+          <div class="label-column ">
+            <mat-label>Branch</mat-label>
+          </div>
+          <div class="data-column">
+            <mat-form-field>
+              <mat-select [(ngModel)]="selectedBranch" placeholder="" name="selectedBranch" class="required-field" required>
+                <mat-option *ngFor="let l of branchs" [value]="l.codeValue">{{l.codeValue}}</mat-option>
+              </mat-select>
+              
+            </mat-form-field>
+          </div>
+        </td>
+        <td>
+          <div class="label-column">
+            <mat-label>User Level</mat-label>
+          </div>
+          <div class="data-column">
+            <mat-form-field>
+              <mat-select [(ngModel)]="selectedLimit" placeholder="" name="selectedLimit" class="required-field"  required>
+                <mat-option *ngFor="let l of limits" [value]="l.levelCode">{{l.levelCode}}</mat-option>
+              </mat-select>
+           
+            </mat-form-field>
+          </div>
+        </td>
+        <td>
+          <div class="label-column">
+            <mat-label>User Group</mat-label>
+          </div>
+          <div class="data-column">
+            <mat-form-field>
+              <mat-select [(ngModel)]="selectedGroup" placeholder="" name="selectedGroup" class="required-field" required>
+                <mat-option *ngFor="let l of groups" [value]="l.groupCode">{{l.groupCode}}</mat-option>
+              </mat-select>
+              
+            </mat-form-field>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="label-column">
+            <mat-label>User Name</mat-label>
+          </div>
+          <div class="data-column">
+            <mat-form-field>
+              <input matInput #inputstate class="form-control required-field" [(ngModel)]="data.username" name="username" maxlength="255"  required>
+             
+            </mat-form-field>
+          </div>
+        </td>
+        <td>
+          <div class="label-column">
+            <mat-label>Gender</mat-label>
+          </div>
+          <div class="data-column">
+            <mat-form-field>
+              <mat-select [(ngModel)]="selectedGender" placeholder="" name="selectedGender" class="required-field"  required>
+                <mat-option *ngFor="let l of genders" [value]="l.codeValue">{{l.codeValue}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </td>
+        <td>
+          <div class="label-column">
+            <mat-label>Role</mat-label>
+          </div>
+          <div class="data-column">
+            <mat-form-field>
+              <mat-select [(ngModel)]="selectedRole" placeholder="" name="selectedRole" class="required-field"  required>
+                <mat-option *ngFor="let l of roles" [value]="l.codeValue">{{l.codeValue}}</mat-option>
+              </mat-select>
+              
+            </mat-form-field>
+          </div>
+        </td>
+        <td>
+          <div class="label-column">
+            <mat-label>Department</mat-label>
+          </div>
+          <div class="data-column">
+            <mat-form-field>
+              <mat-select [(ngModel)]="selectedDept" placeholder="" name="selectedDept" class="required-field"  required>
+                <mat-option *ngFor="let l of depts" [value]="l.codeValue">{{l.codeValue}}</mat-option>
+              </mat-select>
+              
+            </mat-form-field>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="label-column">
+            <mat-label>Email</mat-label>
+          </div>
+          <div class="data-column">
+            <mat-form-field>
+              <input matInput #inputstate class="form-control required-field" [(ngModel)]="data.email" name="email" maxlength="255"   required type="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+             
+              <mat-error *ngIf="formControl.hasError('email') && !formControl.hasError('required')">
+                Please enter a valid email address
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </td>
+        <td>
+          <div class="label-column">
+            <mat-label>Mobile</mat-label>
+          </div>
+          <div class="data-column">
+            <mat-form-field>
+              <input matInput #inputstate class="form-control required-field" [(ngModel)]="data.mobile" name="mobile" maxlength="255" required type="number" onkeydown="javascript: return event.keyCode == 189 ? false : true" onkeypress="javascript: return event.keyCode == 45 ? false : true">
+             
+            </mat-form-field>
+          </div>
+        </td>
+        <td>
+          <div class="label-column">
+            <mat-label>Password</mat-label>
+          </div>
+          <div class="data-column">
+            <mat-form-field>
+              <input matInput #inputstate class="form-control required-field" [(ngModel)]="data.password" name="password" maxlength="255"  required type="password">
+              
+            </mat-form-field>
+          </div>
+        </td>
+        <td>
+            <button mat-raised-button (click)="generatePassword() " style="margin-left: 5px; float: left;height: 28px;"><label style="margin-top: -9px;">generate</label></button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+        </td>
+        <td>
+          <div class="label-column">
+            <mat-label>Desk Phone</mat-label>
+          </div>
+          <div class="data-column">
+            <mat-form-field>
+              <input matInput #inputstate class="form-control" [(ngModel)]="data.phone" name="deskPhone" maxlength="255" type="number" onkeydown="javascript: return event.keyCode == 189 ? false : true" onkeypress="javascript: return event.keyCode == 45 ? false : true">
+            </mat-form-field>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+
+
+    <div>
+      <div>
+        <label style="font-weight: 500;padding-left: 25px;">Select User Functions</label>
+      </div>
+      <div>
+        <div class="row">
+          <div *ngFor="let fun of functions; let i = index" style="max-width: 20px;" class="column">
+            <mat-checkbox (change)="onChange($event)" [value]="fun.codeValue">
+              <label style="font-size: 13px;">{{ fun.shortDesc }}</label>
+            </mat-checkbox>
+          </div>
+        </div>
+      </div>
+      <div class="err-msg">
+        <app-messages></app-messages>
+      </div>
+    </div>
+
+    <div style="text-align: end;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
+    background-color: rgb(240, 246, 249);    height: 55px;">
+      <button mat-raised-button (click)="listUser() " style="margin-left: 5px; float: left">Back</button>
+      <button mat-raised-button (click)="addNew() " [disabled]="!formControl.valid" style="margin-right: 5px; float: right">Save</button>
+    </div>
+  </form>
+</div>

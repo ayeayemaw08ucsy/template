@@ -1,0 +1,13 @@
+<nav mat-tab-nav-bar>
+  <a mat-tab-link (click)="ngOnInit()" 
+     *ngFor="let link of navLinks"
+     [routerLink]="[link.path,link.menuName]"
+     routerLinkActive #rla="routerLinkActive"
+     [active]="rla.isActive" class="tablink">
+    <!--this is for active color-->
+    <div *ngIf="isActive" ><mat-icon svgIcon="{{link.iconactive}}"></mat-icon></div>
+    <!--this is for idl color-->
+    <div *ngIf="active" ><mat-icon svgIcon="{{link.icon}}"></mat-icon></div>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{link.label}}
+  </a>
+</nav> 

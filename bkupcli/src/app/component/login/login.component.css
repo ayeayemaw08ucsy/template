@@ -1,0 +1,74 @@
+.mat-toolbar.mat-primary {
+  background: #add5fe;
+  color: #1789ea;
+  margin-top: 33px;
+}
+
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+  height: 140px;
+}
+
+.title-center {
+  flex: 1 1 auto;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.div-container {
+  transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1);
+  display: block;
+  position: relative;
+  border-radius: 2px;
+  margin-top: 15px;
+  margin-left: 50px;
+  margin-right: 50px;
+  background-color: #f0f6f9;
+  height: 450px;
+}
+
+.fam-header {
+  background-color: #1789ea;
+  color: #ffffff;
+  line-height: 50px;
+  height: 50px;
+}
+
+.fam-header2 {
+  line-height: 35px;
+  height: 35px;
+}
+
+.login-text {
+  padding-left: 40px;
+}
+
+.vl {
+  border-left: 4px solid #dadcdd;
+  height: 300px;
+  margin-top: 17px;
+  margin-bottom: 17px;
+}
+
+.login-footer {
+  line-height: 40px;
+  height: 40px;
+  background-color: #f0f6f9;
+}
+
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  background-color: #ffffff;
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+.mat-raised-button {
+    margin-left: 0;
+    margin-right: 0;
+    background: #ffffff;
+}

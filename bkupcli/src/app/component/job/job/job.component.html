@@ -1,0 +1,66 @@
+<div class="container mat-elevation-z2">
+  <mat-tab-group dynamicHeight>
+
+    <mat-tab label="Job Master">
+      <div>
+        <div class="form" style="background-color: #1789ea;min-height: 35px!important;max-height: 35px!important;">
+          <span class="right">
+            <label style="color: #ffffff; font-size: 14px;">Search</label>
+            <input class="filter" #filter placeholder="Jobs">
+            <button mat-icon-button (click)="refresh()" style="float: right; margin-bottom: 7px;">
+              <mat-icon>refresh</mat-icon>
+            </button>
+          </span>
+        </div>
+
+        <mat-table #table [dataSource]="dataSource" matSort class="mat-cell" style="overflow-y:auto;">
+
+          <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Job Name</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.jobName}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="description">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>Description</mat-header-cell>
+              <mat-cell *matCellDef="let row"> {{row.jobDescription}}</mat-cell>
+            </ng-container>
+
+          <ng-container matColumnDef="category">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Category</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.jobCategory}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="frequency">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Frequency</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.jobFreq}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="jobStarttime">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>Start Time</mat-header-cell>
+              <mat-cell *matCellDef="let row" class="mat-numaric-cell-align-center"> {{row.jobStarttime}}</mat-cell>
+            </ng-container>
+
+          <ng-container matColumnDef="nextJob">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Next Job</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.nextJobName}}</mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+
+
+        <div class="no-results" [style.display]="dataSource.renderedData.length == 0 ? '' : 'none'">
+          No results
+        </div>
+
+        <mat-paginator #paginator [length]="dataSource.filteredData.length" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+        </mat-paginator>
+      </div>
+    </mat-tab>
+
+  </mat-tab-group>
+</div>

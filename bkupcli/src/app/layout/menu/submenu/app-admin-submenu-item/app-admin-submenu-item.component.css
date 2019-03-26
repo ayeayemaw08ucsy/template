@@ -1,0 +1,41 @@
+ /* .tablink {
+    text-decoration: none;
+    height: 30px;
+}
+
+.mat-tab-label-active {
+    color: #ffffff!important;
+    background: #1789ea!important;
+}
+
+.mat-tab-label:hover {
+    color: red!important;
+    background: #1789ea!important;
+}
+
+:host ::ng-deep .mat-ink-bar {
+    height: 0px;
+} */
+
+:host ::ng-deep .mat-tab-links {
+    height: 35px;
+    background: #1789EA;
+}
+
+:host ::ng-deep .mat-tab-link {
+    height: 40px;
+    padding: 0 24px;
+    cursor: pointer;
+    box-sizing: border-box;
+    opacity: .6;
+    min-width: 160px;
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+    white-space: nowrap;
+    /* vertical-align: top; */
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+}

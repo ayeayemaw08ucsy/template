@@ -1,0 +1,50 @@
+<div class="container mat-elevation-z2">
+  <div class="form" style="background-color: #f0f6f9;min-height: 35px!important;">
+    <div>
+      <label  class="canvas-title">Graphs and Charts</label>
+    </div>
+  </div>
+  <div class="form" style="background-color: #1789ea;min-height: 35px!important;"></div>
+  <div class="container">
+    <div class="row" style="margin-right: 0px;margin-left: 0px;padding-top: 15px;">
+
+      <div class="col" style="width:300px!important">
+        <div><label>Bar Chart</label></div>
+        <canvas mdbChart [chartType]="chartType" [data]="data.data" [labels]="data.labels" [colors]="chartColors" [options]="chartOptions"
+          (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+        </canvas>
+        
+      </div>
+
+      <div class="col" style="width:300px!important">
+        <div><label>Donut Chart</label></div>
+        <canvas mdbChart [chartType]="chartType1" [data]="data.data" [labels]="data.labels" [colors]="chartColors" [options]="chartOptions"
+          (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+        </canvas>
+        
+      </div>
+
+    </div>
+
+    <div class="row" style="margin-right: 0px;margin-left: 0px;padding-top: 15px;">
+
+      <div class="col" style="width:300px!important">
+        <div><label>Pie Chart</label></div>
+        <canvas mdbChart [chartType]="chartType2" [data]="data.data" [labels]="data.labels" [colors]="chartColors" [options]="chartOptions"
+          (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+        </canvas>
+        
+      </div>
+
+      <div class="col" style="width:300px!important">
+        <div><label>Line Chart</label></div>
+        <canvas mdbChart [chartType]="chartType3" [data]="data.data" [labels]="data.labels" [colors]="chartColors" [options]="chartOptions"
+          (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+        </canvas>
+        
+      </div>
+
+    </div>
+
+    </div>
+  </div>

@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="dialog-header" style="height: 30px;    padding-left: 10px;">
+    <h5 mat-dialog-title style="margin-top: 3px;font-size: 14px;">Approve</h5>
+  </div>
+
+  <form class="mat-dialog-content" #formControl="ngForm">
+
+    <div style="padding: 0px 20px 20px 20px;">
+      <table>
+        <tr>
+          <td>
+            <mat-label>Level Code</mat-label>
+          </td>
+          <td>
+            <div class="form">
+              <mat-form-field>
+                <input matInput [(ngModel)]="data.codeDesc" name="codeDesc" required maxlength="25" class="form-control" readonly="true">
+                <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-label>Input Limit</mat-label>
+          </td>
+          <td>
+            <div class="form">
+              <mat-form-field>
+                <input matInput #inputstate class="form-control" [(ngModel)]="data.inputLimit" name="imputLimit" maxlength="255" required type="number" readonly="true">
+                <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-label>Approve Limit</mat-label>
+          </td>
+          <td>
+            <div class="form">
+              <mat-form-field>
+                <input matInput #inputstate class="form-control" [(ngModel)]="data.approveLimit" name="approveLimit" maxlength="255" type="number" required readonly="true">
+                <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div style="text-align:center;padding-bottom: 5px;padding-top: 5px; padding-right: 10px;background-color: #f0f6f9;">
+      <button mat-raised-button [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="approve()" style="margin-right: 5px;">Approve</button>
+      <button mat-raised-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+    </div>
+
+  </form>
+</div>

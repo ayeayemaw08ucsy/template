@@ -1,0 +1,127 @@
+<div class="container">
+  <div class="dialog-header" style="height: 30px;    padding-left: 10px;">
+    <h5 mat-dialog-title style="margin-top: 3px;font-size: 16px;">Branch</h5>
+     <label class="required-field-all">&nbsp;Required Field</label>
+  </div>
+  <form class="mat-dialog-content" (ngSubmit)="submit()" #formControl="ngForm">
+    <div style="padding: 0px 20px 20px 20px;">
+    <table>
+      <tr>
+          <td>
+              <mat-label>Active</mat-label>
+          </td>
+          <td style="padding-left: 10px;">
+              <div class="form">
+                <mat-checkbox (change)="OnChange($event)" [(checked)]="checked" [disabled]="disabled"></mat-checkbox>
+              </div>
+           </td>
+      </tr>
+      <tr>
+        <td>
+            <mat-label>Branch Code</mat-label>
+        </td>
+        <td>
+          <div class="form">
+            <mat-form-field>
+                <mat-select [(ngModel)]="selectedBranch" (selectChange)="branchCodeChangeAction()" [ngModelOptions]="{standalone: true}" required class="required-field">
+                <mat-option *ngFor="let b of branches" [value]="b">{{b.codeValue}}</mat-option>
+                </mat-select>
+                
+            </mat-form-field>
+          </div>
+        </td>
+        <td>
+            <mat-label>Branch Desc</mat-label>
+        </td>
+        <td>
+          <div class="form">
+            <mat-form-field>
+                <input matInput #inputstate class="form-control text-border col-md-4" value="{{selectedBranch?.shortDesc}}" name="selectedBranch.shortDesc" maxlength="35" disabled>
+            </mat-form-field>
+          </div>
+        </td>
+      </tr>
+      <tr>
+          <td>
+              <mat-label >Branch Name (1)</mat-label>
+          </td>
+          <td>
+              <div class="form">
+                <mat-form-field>
+                    <input matInput #inputstate class="form-control required-field" [(ngModel)]="data.name1" name="name1" maxlength="35" required>
+                   
+                </mat-form-field>
+              </div>
+          </td>
+          <td>
+              <mat-label>Branch Name (2)</mat-label>
+          </td>
+          <td>
+              <div class="form">
+                <mat-form-field>
+                    <input matInput #inputstate class="form-control required-field" [(ngModel)]="data.name2" name="name2" maxlength="35" required>
+                    
+                </mat-form-field>
+              </div>
+          </td>
+      </tr>
+      <tr>
+          <td>
+              <mat-label >Address</mat-label>
+          </td>
+          <td>
+              <div class="form" style="margin-bottom: 30px;">
+                <mat-form-field>
+                    <textarea matInput #inputstate class="form-control required-field" [(ngModel)]="data.address" name="address" maxlength="255" required></textarea>
+                   
+                </mat-form-field>
+              </div>
+          </td>
+          <td>
+              <mat-label >Pin Code</mat-label>
+          </td>
+          <td>
+              <div class="form" style="margin-bottom: 30px;">
+                <mat-form-field>
+                    <input matInput #inputstate class="form-control required-field" [(ngModel)]="data.pinCode" name="pinCode" maxlength="8" required>
+                   
+                </mat-form-field>
+              </div>
+          </td>
+      </tr>
+      <tr>
+          <td >
+              <mat-label >Country</mat-label>
+          </td>
+          <td>
+              <div class="form">
+                <mat-form-field>
+                    <mat-select [(ngModel)]="selectedCountry" (selectChange)="countryCodeChangeAction()" [ngModelOptions]="{standalone: true}" class="required-field" required>
+                    <mat-option *ngFor="let c of countries" [value]="c.codeValue">{{c.codeValue}}</mat-option>
+                    </mat-select>
+                    
+                </mat-form-field>
+              </div>
+          </td>
+          <td>
+              <mat-label >Region</mat-label>
+          </td>
+          <td>
+              <div class="form">
+                <mat-form-field>
+                    <mat-select [(ngModel)]="selectedRegion" (selectChange)="regionCodeChangeAction()" [ngModelOptions]="{standalone: true}" class="required-field" required>
+                    <mat-option *ngFor="let r of regions" [value]="r.codeValue">{{r.codeValue}}</mat-option>
+                    </mat-select>
+                   
+                </mat-form-field>
+              </div>
+          </td>
+      </tr>
+    </table>
+    </div>
+  </form>
+  <div style="text-align:center;padding-bottom: 5px;padding-top: 5px; padding-right: 10px;background-color: #f0f6f9;">
+      <button mat-raised-button (click)="onNoClick()" tabindex="-1">Cancel</button>&nbsp;&nbsp;
+      <button mat-raised-button [disabled]="!formControl.valid" (click)="confirmAdd()" style="margin-right: 5px;">Save</button>
+  </div>
+</div>

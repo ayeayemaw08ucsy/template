@@ -1,0 +1,601 @@
+<div class="container mat-elevation-z2">
+    <div class="form" style="background-color: #f0f6f9;min-height: 35px!important;">
+        <div>
+            <!--menu label need to change.-->
+            <label  class="canvas-title">{{menuModuleName}} Assets</label>
+        </div>
+    </div>
+    <form class="mat-dialog-content" #formControl="ngForm">
+        <div class="form" style="background-color: #1789ea;min-height: 35px!important;">
+            <span style="color: #fff;font-size: 14px;">
+                <label style="margin-right: 5px;">Entity ID : </label>
+                <label style="margin-right: 25px;">{{fixedAssetMst.entity}}</label>
+                <label style="margin-right: 5px;"> Product Ref :</label>
+                <label style="margin-right: 5px;">{{fixedAssetMst.prodRefId}}</label>
+              </span>
+        </div>
+        <!-- <div style="border:1px solid red; width:500px; height: 300px;margin:20px"> -->
+        <table>
+            <tr>
+                <td>
+                    <fieldset class="fieldset-border">
+                        <legend>
+                              <div class="fieldset-column">
+                                    <mat-label style="padding-right: 9px;">Insurance</mat-label>
+                                <input name="options" ng-control="options" type="radio" [value]="1">Yes
+                                <input name="options" ng-control="options" type="radio" [value]="2">No
+                               
+                            </div>
+                        </legend>
+                        <table>
+                            <tr>
+                                <td>
+                                    <div class="label-column">
+                                        <mat-label>Code</mat-label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <!-- <mat-form-field>
+                                        <input matInput #inputstate class="form-control" [(ngModel)]="addlInfoMst.insVendorCode"
+                                            name="insVendorCode"  maxlength="4" required>
+                                        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                                    </mat-form-field> -->
+                                    <mat-form-field>
+                                        <mat-select [(ngModel)]="selectedInsurance" name="insuranceCode" [disabled]="isUpdateField"
+                                            [ngModelOptions]="{standalone: true}"> 
+                                            <mat-option *ngFor="let b of vendorLst" [value]="b.vendorCode">{{b.vendorCode}}</mat-option>
+                                        </mat-select>
+                                        <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+                                    </mat-form-field>
+                                </td>
+                                <td>
+                                    <div class="label-column">
+                                        <mat-label>Name</mat-label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <mat-form-field>
+                                        <input matInput #inputstate class="form-control" [(ngModel)]="addlInfoMst.insuranceName" [disabled]="isUpdateField"
+                                            name="insuranceName" maxlength="60">
+                                        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                                    </mat-form-field>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="label-column">
+                                        <mat-label>Type</mat-label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <mat-form-field>
+                                        <input matInput #inputstate class="form-control" [(ngModel)]="addlInfoMst.insuranceType" [disabled]="isUpdateField"
+                                            name="insuranceType" maxlength="60">
+                                        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                                    </mat-form-field>
+
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="label-column">
+                                        <mat-label>From</mat-label>
+                                    </div>
+                                </td>
+                                <td>                                   
+                                    <mat-form-field>
+                                        <input matInput [matDatepicker]="insuFrom" class="form-control dt_picker" name="insurFrom" [value]="insurFrom" [(ngModel)]="insurFrom" [disabled]="isUpdateField">    
+                                        <mat-datepicker-toggle matSuffix [for]="insuFrom" style="margin-left: -15px;"></mat-datepicker-toggle>
+                                        <mat-datepicker #insuFrom></mat-datepicker>
+                                    </mat-form-field>
+                                </td>
+                                <td>
+                                    <div class="label-column">
+                                        <mat-label>To</mat-label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <mat-form-field>
+                                        <input matInput [matDatepicker]="insTo" class="form-control dt_picker" [value]="insuranceTo" [(ngModel)]="insuranceTo" [disabled]="isUpdateField" name="insuranceTo">    
+                                        <mat-datepicker-toggle matSuffix [for]="insTo" style="margin-left: -15px;"></mat-datepicker-toggle>
+                                        <mat-datepicker #insTo></mat-datepicker>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+
+
+                        </table>
+                    </fieldset>
+                    <fieldset class="fieldset-border">
+                        <legend class="legend">
+                            <div class="fieldset-column">
+                                    <mat-label style="padding-right: 9px">Warranty</mat-label>
+                                    <input name="options" ng-control="options" type="radio" [value]="1">Yes
+                                    <input name="options" ng-control="options" type="radio" [value]="2">No
+                                
+                            </div>
+                        </legend>
+                        <table>
+                            <tr>
+                                <td>
+                                    <div class="label-column">
+                                        <mat-label>Code</mat-label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <mat-form-field>
+                                        <!-- <input matInput #inputstate class="form-control" [(ngModel)]="addlInfoMst.warrantyCode"
+                                            name="warrantyCode"  maxlength="4" required>
+                                        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error> -->
+                                        <mat-select [(ngModel)]="selectedWarranty" name="warrantyCode" [ngModelOptions]="{standalone: true}" [disabled]="isUpdateField">
+                                            <mat-option *ngFor="let b of vendorLst" [value]="b.vendorCode">{{b.vendorCode}}</mat-option>
+                                        </mat-select>
+                                        <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+                                    </mat-form-field>
+
+                                </td>
+                                <td>
+                                    <div class="label-column">
+                                        <mat-label>Name</mat-label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <mat-form-field>
+                                        <input matInput #inputstate class="form-control" [(ngModel)]="addlInfoMst.warrantyName" [disabled]="isUpdateField"
+                                            name="warrantyName" maxlength="60" >
+                                        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                                    </mat-form-field>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="label-column">
+                                        <mat-label>Type</mat-label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <mat-form-field>
+                                        <input matInput #inputstate class="form-control" [(ngModel)]="addlInfoMst.warrantyType" [disabled]="isUpdateField"
+                                            name="warrantyType" maxlength="60">
+                                        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                                    </mat-form-field>
+
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="label-column">
+                                        <mat-label>From</mat-label>
+                                    </div>
+                                </td>
+                                <td>                                    
+                                    <mat-form-field>
+                                        <input matInput [matDatepicker]="wntFrom" class="form-control dt_picker" [value]="warrantyFrom" [(ngModel)]="warrantyFrom" [disabled]="isUpdateField" name="warrantyFrom">    
+                                        <mat-datepicker-toggle matSuffix [for]="wntFrom" style="margin-left: -15px;"></mat-datepicker-toggle>
+                                        <mat-datepicker #wntFrom></mat-datepicker>
+                                    </mat-form-field>
+                                </td>
+                                <td>
+                                    <div class="label-column">
+                                        <mat-label>To</mat-label>
+                                    </div>
+                                </td>
+                                <td>                                   
+                                    <mat-form-field>
+                                        <input matInput [matDatepicker]="wntTo" class="form-control dt_picker" [value]="warrantyTo" [(ngModel)]="warrantyTo" [disabled]="isUpdateField" name="warrantyTo">    
+                                        <mat-datepicker-toggle matSuffix [for]="wntTo" style="margin-left: -15px;"></mat-datepicker-toggle>
+                                        <mat-datepicker #wntTo></mat-datepicker>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
+
+                    <fieldset class="fieldset-border">
+                        <legend class="legend">
+                            <div class="fieldset-column">
+                                    <mat-label style="padding-right: 9px">Support</mat-label>
+                                <input name="options" ng-control="options" type="radio" [value]="1">Yes
+                                <input name="options" ng-control="options" type="radio" [value]="2">No
+                               
+                            </div>
+                        </legend>
+                        <table>
+                            <tr>
+                                <td>
+                                    <div class="label-column">
+                                        <mat-label>Code</mat-label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <mat-form-field>
+                                        <!-- <input matInput #inputstate class="form-control" [(ngModel)]="addlInfoMst.supportCode"
+                                            name="supportCode"  maxlength="4" required>
+                                        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error> -->
+                                        <mat-select [(ngModel)]="selectedSupport" name="supportCode"  [disabled]="isUpdateField"
+                                            [ngModelOptions]="{standalone: true}">
+                                            <mat-option *ngFor="let b of vendorLst" [value]="b.vendorCode">{{b.vendorCode}}</mat-option>
+                                        </mat-select>
+                                        <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+                                    </mat-form-field>
+
+                                </td>
+                                <td>
+                                    <div class="label-column">
+                                        <mat-label>Name</mat-label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <mat-form-field>
+                                        <input matInput #inputstate class="form-control" [(ngModel)]="addlInfoMst.supportName" [disabled]="isUpdateField"
+                                            name="supportName" maxlength="60">
+                                        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                                    </mat-form-field>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="label-column">
+                                        <mat-label>Type</mat-label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <mat-form-field>
+                                        <input matInput #inputstate class="form-control" [(ngModel)]="addlInfoMst.supportType" [disabled]="isUpdateField"
+                                            name="supportType" maxlength="60">
+                                        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                                    </mat-form-field>
+
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="label-column">
+                                        <mat-label>From</mat-label>
+                                    </div>
+                                </td>
+                                <td>                                   
+                                    <mat-form-field>
+                                        <input matInput [matDatepicker]="supFrom" class="form-control dt_picker" [value]="supportFrom" [(ngModel)]="supportFrom" [disabled]="isUpdateField" name="supportFrom">    
+                                        <mat-datepicker-toggle matSuffix [for]="supFrom" style="margin-left: -15px;"></mat-datepicker-toggle>
+                                        <mat-datepicker #supFrom></mat-datepicker>
+                                    </mat-form-field>
+                                </td>
+                                <td>
+                                    <div class="label-column">
+                                        <mat-label>To</mat-label>
+                                    </div>
+                                </td>
+                                <td>                                    
+                                    <mat-form-field>
+                                        <input matInput [matDatepicker]="supTo" class="form-control dt_picker" [value]="supportTo" [(ngModel)]="supportTo" [disabled]="isUpdateField" name="supportTo">    
+                                        <mat-datepicker-toggle matSuffix [for]="supTo" style="margin-left: -15px;"></mat-datepicker-toggle>
+                                        <mat-datepicker #supTo></mat-datepicker>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </td>
+                <td>
+                    <fieldset class="fieldset-border-right">
+                        <legend class="legend">
+                            <div class="fieldset-column">
+                                    <mat-label style="padding-right: 9px">Tax</mat-label>
+                                    <input name="options" ng-control="options" type="radio" [value]="1">Yes
+                                    <input name="options" ng-control="options" type="radio" [value]="2">No
+                               
+                            </div>
+                        </legend>
+                        <table>
+                            <tr>
+                                <td>
+                                    <div class="label-column">
+                                        <mat-label>Code</mat-label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <mat-form-field>
+                                        <!-- <input matInput #inputstate class="form-control" [(ngModel)]="addlInfoMst.taxCode"
+                                            name="taxCode"  maxlength="4" required>
+                                        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error> -->
+                                        <mat-select [(ngModel)]="selectedTax" name="taxCode" [ngModelOptions]="{standalone: true}" [disabled]="isUpdateField" >
+                                            <mat-option *ngFor="let b of vendorLst" [value]="b.vendorCode">{{b.vendorCode}}</mat-option>
+                                        </mat-select>
+                                        <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+                                    </mat-form-field>
+
+                                </td>
+                                <td>
+                                    <div class="label-column">
+                                        <mat-label>Name</mat-label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <mat-form-field>
+                                        <input matInput #inputstate class="form-control" [(ngModel)]="addlInfoMst.taxName" [disabled]="isUpdateField"
+                                            name="taxName" maxlength="60">
+                                        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                                    </mat-form-field>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="label-column">
+                                        <mat-label>Type</mat-label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <mat-form-field>
+                                        <input matInput #inputstate class="form-control" [(ngModel)]="addlInfoMst.taxType" [disabled]="isUpdateField"
+                                            name="taxType" maxlength="60">
+                                        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                                    </mat-form-field>
+
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="label-column">
+                                        <mat-label>Currency</mat-label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <mat-form-field>
+                                        <input matInput #inputstate class="form-control" [(ngModel)]="addlInfoMst.taxCurrency" [disabled]="isUpdateField"
+                                            name="insuranceFrom" >
+                                        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                                    </mat-form-field>
+
+                                </td>
+                                <td>
+                                    <div class="label-column">
+                                        <mat-label>Amount</mat-label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <mat-form-field>
+                                        <input type="number" matInput #inputstate class="form-control" [(ngModel)]="addlInfoMst.taxAmount" [disabled]="isUpdateField"
+                                            name="taxAmount">
+                                      <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                                    </mat-form-field>
+
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="label-column">
+                                        <mat-label>Rate</mat-label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <mat-form-field>
+                                        <input type="number" matInput #inputstate class="form-control" [(ngModel)]="addlInfoMst.taxRate" [disabled]="isUpdateField"
+                                          name="taxRate">
+                                        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                                    </mat-form-field>
+
+                                </td>
+
+                            </tr>
+
+
+                        </table>
+                    </fieldset>
+                    <fieldset class="fieldset-border-right-low">
+                        <legend class="legend">
+                            <div class="fieldset-column">
+                                    <mat-label style="padding-right: 9px">Financing</mat-label>
+                                <input name="options" ng-control="options" type="radio" [value]="1">Yes
+                                <input name="options" ng-control="options" type="radio" [value]="2">No
+                                
+                            </div>
+                        </legend>
+                        <table>
+                            <tr>
+                                <td>
+                                    <div class="label-column">
+                                        <mat-label>Code</mat-label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <mat-form-field>
+                                        <!-- <input matInput #inputstate class="form-control" [(ngModel)]="addlInfoMst.financeCode"
+                                            name="financeCode"  maxlength="4" required>
+                                        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error> -->
+                                        <mat-select [(ngModel)]="selectedFinancing" name="selectedFinancing"  [disabled]="isUpdateField"
+                                            [ngModelOptions]="{standalone: true}">
+                                            <mat-option *ngFor="let b of vendorLst" [value]="b.vendorCode">{{b.vendorCode}}</mat-option>
+                                        </mat-select>
+                                        <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+                                    </mat-form-field>
+
+                                </td>
+                                <td>
+                                    <div class="label-column">
+                                        <mat-label>Name</mat-label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <mat-form-field>
+                                        <input matInput #inputstate class="form-control" [(ngModel)]="addlInfoMst.financeName" [disabled]="isUpdateField"
+                                            name="financeName" maxlength="60">
+                                        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                                    </mat-form-field>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="label-column">
+                                        <mat-label>Type</mat-label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <mat-form-field>
+                                        <input matInput #inputstate class="form-control" [(ngModel)]="addlInfoMst.financeType" [disabled]="isUpdateField"
+                                            name="financeType" maxlength="60">
+                                        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                                    </mat-form-field>
+
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="label-column">
+                                        <mat-label>Currency</mat-label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <mat-form-field>
+                                        <input matInput #inputstate class="form-control" [(ngModel)]="addlInfoMst.financeCurrency" [disabled]="isUpdateField"
+                                            name="financeCurrency">
+                                        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                                    </mat-form-field>
+
+                                </td>
+                                <td>
+                                    <div class="label-column">
+                                        <mat-label>Amount</mat-label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <mat-form-field>
+                                        <input type="number" matInput #inputstate class="form-control" [(ngModel)]="addlInfoMst.financeAmt" [disabled]="isUpdateField"
+                                            name="financeAmt" maxlength="4" >
+                                        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                                    </mat-form-field>
+
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="label-column">
+                                        <mat-label>Rate</mat-label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <mat-form-field>
+                                        <input type="number" matInput #inputstate class="form-control" [(ngModel)]="addlInfoMst.rate" [disabled]="isUpdateField"
+                                            name="rate" maxlength="4" >
+                                        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                                    </mat-form-field>
+
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="label-column">
+                                        <mat-label>From</mat-label>
+                                    </div>
+                                </td>
+                                <td>                                    
+                                    <mat-form-field>
+                                        <input matInput [matDatepicker]="fncFrom" class="form-control dt_picker" [value]="financeFrom" [(ngModel)]="financeFrom" [disabled]="isUpdateField" name="financeFrom">    
+                                        <mat-datepicker-toggle matSuffix [for]="fncFrom" style="margin-left: -15px;"></mat-datepicker-toggle>
+                                        <mat-datepicker #fncFrom></mat-datepicker>
+                                    </mat-form-field>
+                                </td>
+                                <td>
+                                    <div class="label-column">
+                                        <mat-label>To</mat-label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <mat-form-field>
+                                        <input matInput [matDatepicker]="fncTo" class="form-control dt_picker" [value]="financeTo" [(ngModel)]="financeTo" [disabled]="isUpdateField" name="financeTo">    
+                                        <mat-datepicker-toggle matSuffix [for]="fncTo" style="margin-left: -15px;"></mat-datepicker-toggle>
+                                        <mat-datepicker #fncTo></mat-datepicker>
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </td>
+            </tr>
+        </table>
+
+        <!-- </div> -->
+        <div class="err-msg">
+            <app-messages></app-messages>
+        </div>
+
+        <div class="fixedasset-btn-layout">
+            <div style="float: left">.
+                <button mat-raised-button tabindex="-1" (click)="deleteEntry()" class="btn-left" *ngIf="(menuModuleName === 'Update') && subMenuModuleName !== 'Approve' && fixedAssetStatus !== 'Approval' && (!register && ! draft && !amend && !amendApprove) ">
+                    <mat-icon aria-label="Delete Update Entry" svgIcon="faDeleteEntry"></mat-icon>Delete Update Entry
+                </button>
+
+                <button mat-raised-button tabindex="-1" (click)="deleteEntry()" class="btn-left" *ngIf="(menuModuleName === 'Dispose') && subMenuModuleName !== 'Approve' && fixedAssetStatus !== 'Approval' && (!register && ! draft && !amend && !amendApprove) ">
+                    <mat-icon aria-label="Delete Dispose Entry" svgIcon="faDeleteEntry"></mat-icon>Delete Dispose Entry
+                </button>
+                <button mat-raised-button tabindex="-2" (click)="back()" class="btn-back">
+                    <mat-icon aria-label="Back" svgIcon="faBack"></mat-icon>Back
+                </button>
+            </div>
+            <div style="float: right;">
+                <button mat-raised-button tabindex="-1" (click)="saveDraft()" class="btn-right" *ngIf=" menuModuleName !== 'Dispose' && subMenuModuleName !== 'Approve' && fixedAssetStatus !== 'Approval' && !register && ! draft && !amend && !amendApprove ">
+                    <mat-icon aria-label="Save Draft" svgIcon="faSaveDraft"></mat-icon>Save Draft
+                </button>
+                <!-- <button mat-raised-button tabindex="-1" (click)="saveDraftDispose()" class="btn-right" *ngIf="menuModule === 'Dispose' && !register && ! draft && !amend && !amendApprove ">
+                    <mat-icon aria-label="Save Draft" svgIcon="faSaveDraft"></mat-icon>Save Draft
+                </button> -->
+                <button mat-raised-button (click)="disposeFAData()" class="btn-right" *ngIf="menuModuleName === 'Dispose' && subMenuModuleName !== 'Approve'  && !register && ! draft && !amend && !amendApprove ">
+                    <mat-icon aria-label="Update" svgIcon="faSave"></mat-icon>Dispose
+                </button>
+                <button mat-raised-button (click)="updateFAData()" class="btn-right" *ngIf="menuModuleName === 'Update' && subMenuModuleName !== 'Approve' && fixedAssetStatus !== 'Approval'  && !register && ! draft && !amend && !amendApprove ">
+                    <mat-icon aria-label="Update" svgIcon="faSave"></mat-icon>Update
+                </button>
+                <button mat-raised-button (click)="backToListScreen()" class="btn-right" *ngIf="fixedAssetStatus === 'Approval' || (subMenuModuleName === 'Approve' && menuModuleName === 'Dispose') && !register && ! draft && !amend && !amendApprove ">
+                    <mat-icon aria-label="Update" svgIcon="fam-approve"></mat-icon>Cancel
+                </button>
+                <button mat-raised-button (click)="approveUpdateFa()" class="btn-right" *ngIf="(fixedAssetStatus === 'Approval' || (subMenuModuleName === 'Approve' && menuModuleName === 'Update' )) && !register && ! draft && !amend && !amendApprove ">
+                    <mat-icon aria-label="Update" svgIcon="fam-approve"></mat-icon>Approve
+                </button>
+                <button mat-raised-button (click)="approveDisposeFa()" class="btn-right" *ngIf="(fixedAssetStatus === 'Approval' || (subMenuModuleName === 'Approve' && menuModuleName === 'Dispose')) && !register && ! draft && !amend && !amendApprove ">
+                    <mat-icon aria-label="Update" svgIcon="fam-approve"></mat-icon>Approve
+                </button>
+
+                <button *ngIf="register" mat-raised-button (click)="approveRegister()" class="btn-right">
+                    <mat-icon aria-label="Approve" svgIcon="fam-approve"></mat-icon>Approve
+                </button>
+                <button *ngIf="draft" mat-raised-button (click)="completeRegister()" class="btn-right">
+                    <mat-icon aria-label="Complete" svgIcon="fam-pending"></mat-icon>Complete
+                </button>
+                <button *ngIf="amend" mat-raised-button (click)="RequestForAmendFixedAsset()" class="btn-right">
+                    <mat-icon aria-label="Amend" svgIcon="fam-pending"></mat-icon>Amend
+                </button>
+                <button *ngIf="amendApprove" mat-raised-button (click)="ApproveForAmendFixedAsset()" class="btn-right">
+                    <mat-icon aria-label="Approve" svgIcon="fam-approve"></mat-icon>Approve
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

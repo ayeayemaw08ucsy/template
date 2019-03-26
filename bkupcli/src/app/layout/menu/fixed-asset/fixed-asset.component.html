@@ -1,0 +1,53 @@
+<!-- <nav mat-tab-nav-bar>
+  <a mat-tab-link
+     *ngFor="let link of navLinks"
+     [routerLink]="[link.path,link.menuName]"
+     routerLinkActive #rla="routerLinkActive"
+     [active]="rla.isActive" class="tablink">
+    <mat-icon svgIcon="{{link.icon}}"></mat-icon>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{link.label}}
+  </a>
+</nav> -->
+
+<mat-tab-group (selectedTabChange)="onTabClick($event)" dynamicHeight>
+  <mat-tab>
+    <ng-template mat-tab-label>
+        <!-- <div *ngIf="secondMenu === 0"><mat-icon svgIcon="new-active"></mat-icon> New</div> -->
+        <!-- <div *ngIf="secondMenu !== 0"><mat-icon svgIcon="new"></mat-icon> New</div> -->
+        <div><mat-icon svgIcon="new-active"></mat-icon> New</div>
+    </ng-template>
+    <div>
+      <app-fa-new></app-fa-new>
+    </div>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+        <!-- <div *ngIf="secondMenu === 1"><mat-icon svgIcon="amend-active"></mat-icon>&nbsp; Amend</div> -->
+        <!-- <div *ngIf="secondMenu !== 1"><mat-icon svgIcon="amend-idl"></mat-icon>&nbsp; Amend</div> -->
+        <div><mat-icon svgIcon="amend-idl"></mat-icon>&nbsp; Amend</div>
+    </ng-template>
+    <div>
+      <app-fa-common [currentMenuName]="menuName"></app-fa-common>
+    </div>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <!-- <div *ngIf="secondMenu === 2"><mat-icon  svgIcon="updateActive"></mat-icon>&nbsp; Update</div> -->
+      <!-- <div *ngIf="secondMenu !== 2"><mat-icon  svgIcon="update-idl"></mat-icon>&nbsp; Update</div> -->
+      <div><mat-icon  svgIcon="update-idl"></mat-icon>&nbsp; Update</div>
+    </ng-template>
+    <div>
+      <app-fa-common [currentMenuName]="menuName"></app-fa-common>
+    </div>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <!-- <div *ngIf="secondMenu === 3"><mat-icon  svgIcon="dispose-active"></mat-icon>&nbsp; Dispose</div> -->
+      <!-- <div *ngIf="secondMenu !== 3"><mat-icon  svgIcon="dispose-idl"></mat-icon>&nbsp; Dispose</div> -->
+      <div><mat-icon  svgIcon="dispose-idl"></mat-icon>&nbsp; Dispose</div>
+    </ng-template>
+    <div>
+      <app-fa-common [currentMenuName]="menuName"></app-fa-common>
+    </div>
+  </mat-tab>
+ </mat-tab-group>

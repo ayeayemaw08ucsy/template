@@ -1,0 +1,43 @@
+<nav mat-tab-nav-bar  *ngIf="currentMenuName === 'Amend'">
+    <a mat-tab-link (click)="ngOnInit()"
+       *ngFor="let link of navLinks"
+       [routerLink]="[link.path,link.amendMenuName]"
+       routerLinkActive #rla="routerLinkActive"
+       [active]="rla.isActive" class="tablink">
+      <mat-icon svgIcon="{{link.icon}}"></mat-icon>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{link.label}}
+    </a>
+  </nav> 
+
+  <nav mat-tab-nav-bar *ngIf="currentMenuName === 'Update'">
+    <a  mat-tab-link (click)="ngOnInit()"
+    *ngFor="let link of navLinks"
+    [routerLink]="[link.path,link.updateMenuName]"
+    routerLinkActive #rla="routerLinkActive"
+    [active]="rla.isActive" class="tablink">
+   <mat-icon svgIcon="{{link.icon}}"></mat-icon>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{link.label}}
+ </a>
+  </nav>
+
+  <nav mat-tab-nav-bar  *ngIf="currentMenuName === 'Dispose'">
+    <a mat-tab-link (click)="ngOnInit()"
+    *ngFor="let link of navLinks"
+    [routerLink]="[link.path,link.disposeMenuName]"
+    routerLinkActive #rla="routerLinkActive"
+    [active]="rla.isActive" class="tablink">
+   <mat-icon svgIcon="{{link.icon}}"></mat-icon>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{link.label}}
+ </a>
+  </nav>
+
+  <nav mat-tab-nav-bar  *ngIf="currentMenuName === 'Register'">
+    <a mat-tab-link (click)="ngOnInit()"
+    *ngFor="let link of navLinks"
+    [routerLink]="[link.path,link.registerMenuName]"
+    routerLinkActive #rla="routerLinkActive"
+    [active]="rla.isActive" class="tablink">
+   <mat-icon svgIcon="{{link.icon}}"></mat-icon>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{link.label}}
+ </a>
+  </nav>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<property name="DEV_HOME" value="C:/logs" />
+
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>
+				[%d{yyyy/MM/dd HH:mm:ss.SSS}] [%-5p] [%t] [%X{ipAddress}] [%X{sessionId}] [%X{userId}] - %msg%n
+			</Pattern>
+		</layout>
+	</appender>
+
+	<appender name="FILE-OUTPUT"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${DEV_HOME}/FamApplication.log</file>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>
+				[%d{yyyy/MM/dd HH:mm:ss.SSS}] [%-5p] [%t] [%X{ipAddress}] [%X{sessionId}] [%X{userId}] - %msg%n
+			</Pattern>
+		</encoder>
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- rollover daily -->
+			<fileNamePattern>${DEV_HOME}/archived/application.%d{yyyy-MM-dd}.%i.log </fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>20MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+	</appender>
+
+	<logger name="com.bbi.fam" level="debug" additivity="false">
+		<appender-ref ref="FILE-OUTPUT" />
+		<appender-ref ref="CONSOLE" />
+	</logger>
+	
+	<logger name="org.springframework.web" level="error" additivity="false">
+		<appender-ref ref="FILE-OUTPUT" />
+		<appender-ref ref="CONSOLE" />
+	</logger>
+
+	<root level="info">
+		<appender-ref ref="FILE-OUTPUT" />
+		<appender-ref ref="CONSOLE" />
+	</root>
+
+</configuration>

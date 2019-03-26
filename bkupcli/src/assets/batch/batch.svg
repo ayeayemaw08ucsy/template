@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="44.868" height="47" viewBox="0 0 44.868 47">
+  <g id="Group_5615" data-name="Group 5615" transform="translate(-6446 -42.5)">
+    <g id="Group_5189" data-name="Group 5189" transform="translate(5563.412 -608.766)">
+      <g id="Group_5188" data-name="Group 5188">
+        <path id="Path_1107" data-name="Path 1107" d="M895.956,696.043a1.724,1.724,0,0,0,1.723,1.723h27.554a1.723,1.723,0,0,0,1.723-1.723V665.489a1.722,1.722,0,0,0-1.723-1.723h-8.554a1.724,1.724,0,0,1-1.723-1.723v-8.554a1.722,1.722,0,0,0-1.723-1.723H897.679a1.723,1.723,0,0,0-1.723,1.723" fill="none" stroke="#606060" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1"/>
+        <line id="Line_200" data-name="Line 200" x2="11" y2="11" transform="translate(914.956 652.766)" fill="none" stroke="#606060" stroke-miterlimit="10" stroke-width="1"/>
+      </g>
+    </g>
+    <g id="Rectangle_2062" data-name="Rectangle 2062" transform="translate(6450 78)" fill="none" stroke="#606060" stroke-width="1">
+      <rect width="31" height="8" rx="3" stroke="none"/>
+      <rect x="0.5" y="0.5" width="30" height="7" rx="2.5" fill="none"/>
+    </g>
+    <g id="Rectangle_2063" data-name="Rectangle 2063" transform="translate(6450 69)" fill="none" stroke="#606060" stroke-width="1">
+      <rect width="31" height="8" rx="3" stroke="none"/>
+      <rect x="0.5" y="0.5" width="30" height="7" rx="2.5" fill="none"/>
+    </g>
+    <g id="Rectangle_2064" data-name="Rectangle 2064" transform="translate(6450 60)" fill="none" stroke="#606060" stroke-width="1">
+      <rect width="31" height="8" rx="3" stroke="none"/>
+      <rect x="0.5" y="0.5" width="30" height="7" rx="2.5" fill="none"/>
+    </g>
+    <g id="Rectangle_2065" data-name="Rectangle 2065" transform="translate(6446 47)" fill="none" stroke="#606060" stroke-width="1">
+      <rect width="31" height="8" rx="3" stroke="none"/>
+      <rect x="0.5" y="0.5" width="30" height="7" rx="2.5" fill="none"/>
+    </g>
+    <g id="Group_5614" data-name="Group 5614">
+      <path id="Path_1180" data-name="Path 1180" d="M6471.759,55.442l1.216,1.391,3.411-2.349" transform="translate(1.741 8.016)" fill="none" stroke="#606060" stroke-linecap="round" stroke-width="1"/>
+      <path id="Path_1181" data-name="Path 1181" d="M6471.759,55.442l1.216,1.391,3.411-2.349" transform="translate(1.741 17.016)" fill="none" stroke="#606060" stroke-linecap="round" stroke-width="1"/>
+      <path id="Path_1182" data-name="Path 1182" d="M6471.759,55.442l1.216,1.391,3.411-2.349" transform="translate(1.741 26.016)" fill="none" stroke="#606060" stroke-linecap="round" stroke-width="1"/>
+    </g>
+  </g>
+</svg>

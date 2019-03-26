@@ -1,0 +1,290 @@
+<div class="container mat-elevation-z2">
+  <div class="form" style="background-color: #f0f6f9;min-height: 35px!important;">
+    <div>
+      <label  class="canvas-title">New Register</label>
+    </div>
+  </div>
+  <form #formControl="ngForm">
+    <div class="form" style="background-color: #1789ea;min-height: 35px!important;">
+          <span style="color: #fff;font-size: 14px;">
+            <label style="margin-right: 5px;">Entity ID : </label>
+            <label style="margin-right: 25px;">{{fixedAsset.entity}}</label>
+            <label style="margin-right: 5px;">Product Ref : </label>
+            <label style="margin-right: 5px;">{{fixedAsset.prodRefId}}</label>
+          </span>
+    </div>
+    <table>
+      <tr>
+          <td>
+              <div class="label-column">
+              <mat-label>Asset Tracking</mat-label>
+              </div>
+              <div style="float: left; padding-left: 20px; margin-top: 5px;">
+                <mat-checkbox [(checked)]="checked" (change)="OnChange($event)" [ngModelOptions]="{standalone: true}"></mat-checkbox>
+              </div>
+           </td>
+        </tr>
+      <tr>
+        <td>
+          <div class="label-column">
+            <mat-label>Transaction Currency</mat-label>
+          </div>
+        <div class="data-column">
+            <mat-form-field>
+                <mat-select name="transactionCurrency" [(ngModel)]="transactionCurrency" class="required-field" required>
+                    <mat-option *ngFor="let c of currencies" [value]="c.codeValue">{{c.codeValue}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="formControl.invalid">{{getErrorMessage('Transaction Currency')}}</mat-error>
+            </mat-form-field>
+        </div>
+        </td>
+        <td>
+          <div class="label-column">
+            <mat-label>Transaction Amount</mat-label>
+          </div>
+          <div class="data-column">
+            <mat-form-field>
+                <input matInput #inputstate class="form-control required-field" [(ngModel)]="fixedAsset.tnxAmount" name="tnxAmount"  required pattern="^\d*\.?\d{1,2}$">
+            </mat-form-field>
+          </div>
+        </td>
+        <td>
+          <div class="label-column">
+            <mat-label>&nbsp;&nbsp;&nbsp;Asset Type</mat-label>
+          </div>
+          <div class="data-column">
+            <mat-form-field>
+                <input matInput #inputstate class="form-control" [(ngModel)]="fixedAsset.assetType" name="assetType" disabled="disabled">
+            </mat-form-field>
+          </div>
+        </td>
+        <td>
+          <div class="label-column">
+            <mat-label>Asset Sub Type</mat-label>
+          </div>
+          <div class="data-column">
+            <mat-form-field>
+                <input matInput #inputstate class="form-control" [(ngModel)]="fixedAsset.assetSubType" name="assetSubType" disabled="disabled">
+            </mat-form-field>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="label-column">
+            <mat-label>Book Currency</mat-label>
+          </div>
+          <div class="data-column">
+            <mat-form-field>
+                <input matInput class="form-control" value="{{transactionCurrency}}" name="bookCurrency" disabled="disabled">
+            </mat-form-field>
+          </div>
+        </td>
+        <td>
+          <div class="label-column">
+            <mat-label>Book Amount</mat-label>
+          </div>
+          <div class="data-column">
+            <mat-form-field>
+                <input matInput class="form-control" [(ngModel)]="fixedAsset.bookAmt" name="bookAmt" value="{{fixedAsset.tnxAmount}}" disabled="disabled" pattern="^\d*\.?\d{1,2}$">
+            </mat-form-field>
+          </div>
+        </td>
+        <td>
+          <div class="label-column">
+            <mat-label>Depreciation Method</mat-label>
+          </div>
+          <div class="data-column">
+            <mat-form-field>
+                <input matInput class="form-control" [(ngModel)]="fixedAsset.depMethod" name="depMethod" maxlength="35" disabled="disabled">
+            </mat-form-field>
+          </div>
+        </td>
+        <td>
+          <div class="label-column">
+            <mat-label>Depreciation Rate</mat-label>
+          </div>
+          <div class="data-column">
+            <mat-form-field>
+                <input matInput class="form-control" [(ngModel)]="fixedAsset.depRate" name="depRate" maxlength="35" disabled="disabled">
+            </mat-form-field>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="label-column">
+            <mat-label>Residual Currency</mat-label>
+          </div>
+          <div class="data-column">
+            <mat-form-field>
+                <input matInput class="form-control" value="{{transactionCurrency}}" name="residualCurrency" disabled="disabled">
+            </mat-form-field>
+          </div>
+        </td>
+        <td>
+          <div class="label-column">
+            <mat-label>Residual Amount</mat-label>
+          </div>
+          <div class="data-column">
+            <mat-form-field>
+                <input id="residualValue" matInput type="number" class="form-control required-field" [(ngModel)]="fixedAsset.residualValue" name="residualValue" #residualValue="ngModel" [max]="fixedAsset.tnxAmount"  required pattern="^\d*\.?\d{1,2}$" >
+                <mat-error *ngIf="!formControl.valid">{{getErrorMessage('Residual Amount')}}</mat-error>
+                <!-- <p *ngIf="residualValue.errors?.max">error message</p>              -->
+            </mat-form-field>
+          </div>
+        </td>
+        <td>
+          <div class="label-column">
+            <mat-label>Depreciation Coll Freq</mat-label>
+          </div>
+          <div class="data-column">
+            <mat-form-field>
+                <input matInput class="form-control" [(ngModel)]="fixedAsset.depCollFrequency" name="depCollFrequency" disabled="disabled">
+            </mat-form-field>
+          </div>
+        </td>
+        <td>
+          <div class="label-column">
+            <mat-label>Depreciation Useful Life</mat-label>
+          </div>
+          <div class="data-column">
+            <mat-form-field>
+                <input matInput class="form-control" [(ngModel)]="fixedAsset.depUsefulLife" name="depUsefulLife" disabled="disabled">
+            </mat-form-field>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="label-column">
+            <mat-label>Exchange Rate</mat-label>
+          </div>
+          <div class="data-column">
+            <mat-form-field>
+                <input matInput class="form-control" [(ngModel)]="fixedAsset.exchRate" name="exchRate" pattern="^\d*\.?\d{1,2}$" >
+            </mat-form-field>
+          </div>
+        </td>
+        <td>
+          <div class="label-column">
+            <mat-label>Asset Quantity</mat-label>
+          </div>
+          <div class="data-column">
+            <mat-form-field>
+                <input matInput class="form-control" [(ngModel)]="fixedAsset.assetQuantity" name="assetQuantity" pattern="^\d*$" >
+            </mat-form-field>
+          </div>
+        </td>
+        <td>
+          <div class="label-column">
+            <mat-label>Accumulated Depreciation</mat-label>
+          </div>
+          <div class="data-column">
+            <mat-form-field>
+                <input matInput class="form-control" [(ngModel)]="fixedAsset.accumDepAmt" name="accumDepAmt" disabled>
+            </mat-form-field>
+          </div>
+        </td>
+        <td>
+          <div class="label-column">
+            <mat-label>Net Asset Value</mat-label>
+          </div>
+          <div class="data-column">
+            <mat-form-field>
+                <input matInput class="form-control" [(ngModel)]="fixedAsset.netAssetAmount" name="netAssetAmount" disabled>
+            </mat-form-field>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="label-column">
+            <mat-label>Purchase Date</mat-label>
+          </div>
+          <div class="data-column">
+            <mat-form-field>
+                <input matInput [(ngModel)]="fixedAsset.purchaseDate" name="purchaseDate" required [matDatepicker]="myDatepicker" style="border: 1px solid #ced4da !important; border-radius: .25rem !important;min-height:28px;vertical-align: baseline; width: 170px;margin-left: 6px; border-left: 4px solid orange !important;">
+                <mat-datepicker-toggle matSuffix [for]="myDatepicker" style="margin-left: -15px;"></mat-datepicker-toggle>
+                <mat-datepicker #myDatepicker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </td>
+        <td>
+          <div class="label-column">
+            <mat-label>Last Collect Date</mat-label>
+          </div>
+          <div class="data-column">
+            <mat-form-field>
+                <input matInput class="form-control" [(ngModel)]="fixedAsset.lastCollectionDate" name="lastCollectionDate" disabled>
+            </mat-form-field>
+          </div>
+        </td>
+        <td>
+          <div class="label-column">
+            <mat-label>Periodic Depreciation</mat-label>
+          </div>
+          <div class="data-column">
+            <mat-form-field>
+                <input matInput class="form-control" [(ngModel)]="fixedAsset.periodicDepreciation" name="periodicDepreciation" disabled>
+            </mat-form-field>
+          </div>
+        </td>
+        <td>
+          <div class="label-column">
+            <mat-label>Depreciation Sequence</mat-label>
+          </div>
+          <div class="data-column">
+            <mat-form-field>
+                <input matInput class="form-control" [(ngModel)]="fixedAsset.depSequence" name="depSequence" disabled>
+            </mat-form-field>
+          </div>
+        </td>
+      </tr>      
+    </table>
+    <div class="row">
+      <div style="width: 50%" class="row">  
+          <div>
+            <mat-label class="description">Asset Description 1</mat-label>     
+          </div>
+          <div style="width: 30%">
+            <textarea matInput class="form-control description-txt required-field" [(ngModel)]="fixedAsset.assetDesc1" name="assetDesc1" maxlength="255" required></textarea>
+            <!-- <mat-error *ngIf="formControl.invalid">{{getErrorMessage('Asset Description 1')}}</mat-error> -->
+          </div>      
+          <div>
+              <mat-label class="description-2">Asset Description 2</mat-label>
+          </div>
+          <div style="width: 31%; margin-left: 17px;">
+            <textarea matInput class="form-control description-2-txt" [(ngModel)]="fixedAsset.assetDesc2" name="assetDesc2" maxlength="255"></textarea>
+            <!-- <mat-error *ngIf="formControl.invalid">{{getErrorMessage('Asset Description 2')}}</mat-error> -->
+          </div>       
+       </div> 
+       <div class="row" style="float: right; margin-left: 20px; width: 50%">
+          <label style="font-size: 12px; float: left; margin-right: 20px; margin-top: 20px;" >Upload Picture</label>  
+          <!-- <label for="file" class="upload" ><mat-icon aria-label="upd" svgIcon="uploadInActive"></mat-icon>Upload&nbsp;</label>   -->
+          <label for="file" class="upload" >Upload&nbsp;&nbsp;&nbsp;</label>       
+          <input id="file" class="inputfile" name="imageUrl" type="file" multiple accept="image/*" (change)="handleInputChange($event)" style="margin-top: 15px;"  />  
+          <img [src]="imageSrc" style="max-width:40px;max-height:40px; margin-top: 10px;"/>
+       </div>
+    </div>
+  </form>
+  <br/>
+<div style="padding-left: 10px;padding-bottom: 3px;padding-top: 3px; padding-right: 10px;background-color: #f0f6f9;height: 40px !important; margin-bottom: -10px;">
+    <div style="float: left">
+        <button mat-raised-button tabindex="-1" (click)="delete()" style="margin-right: 5px; font-size: 13px;" class="btn-left">
+            <mat-icon aria-label="Delete Entry" svgIcon="faDeleteEntry"></mat-icon>Delete Entry
+        </button>
+        <button mat-raised-button tabindex="-1" (click)="back()" style="margin-right: 5px;height: 33px !important; font-size: 13px;">
+            <mat-icon aria-label="Back" svgIcon="faBack"></mat-icon>Back
+        </button>
+    </div>
+    <div style="float: right;">
+        <button mat-raised-button tabindex="-1" [disabled]="!formControl.valid" (click)="saveDraft()" style="margin-right: 5px;height: 33px !important; font-size: 13px;">
+            <mat-icon aria-label="Save Draft" svgIcon="faSaveDraft"></mat-icon>Save Draft
+        </button>
+        <button mat-raised-button (click)="next()" [disabled]="!formControl.valid" style="margin-right: 5px;height: 33px !important; font-size: 13px;">
+            <mat-icon aria-label="Next" svgIcon="faNext"></mat-icon>Next
+        </button>
+    </div>
+</div>
+</div>

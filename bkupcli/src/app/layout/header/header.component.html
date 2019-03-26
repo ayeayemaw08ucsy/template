@@ -1,0 +1,34 @@
+
+<mat-sidenav-container>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+     <div>
+        <img src="../../../assets/DEMO_ICON.png" style="float: right;width: 35px;">
+      </div>
+      <div class="mat-head-text-align">
+        <!--<h4 >Fixed Asset Management System</h4>-->
+        <p style="font-size: 23px !important">Fixed Asset Management System</p>
+      </div>
+      <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
+        <button mat-button [matMenuTriggerFor]="menu">
+          <mat-icon>person_pin</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <div style="padding-left: 8px;;background-color: #1789ea;margin-top: -8px;height: 40px;">
+            <label style="padding-top: 5px;color: #ffffff"> {{username}} </label>
+          </div>
+          <div>
+            <button mat-raised-button style="width: 100%; margin-bottom: 8px;">
+              <label> Setting </label>
+            </button>
+            <button mat-raised-button style="width: 100%" (click)="btnClick()">
+              <label> Logout </label>
+            </button>
+          </div>
+        </mat-menu>
+      </div>
+    </mat-toolbar>
+    <main>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>

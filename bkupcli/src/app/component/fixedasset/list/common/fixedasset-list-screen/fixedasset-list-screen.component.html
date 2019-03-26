@@ -1,0 +1,123 @@
+<div class="container mat-elevation-z2">
+  <mat-tab-group dynamicHeight>
+    <!--Update Assets from Menu -->
+    <mat-tab>
+        <ng-template mat-tab-label>
+          <span>{{menuModuleName}} Assets</span>
+        </ng-template>
+      <div>
+         <div class="form" style="background-color: #1789ea;min-height: 35px!important;max-height: 35px!important;">
+          <span class="right">
+            <label style="color: #ffffff; font-size: 14px;">Search</label>
+            <input class="filter" #filter placeholder="Code, Short Description and Long Description ">
+            <button mat-icon-button (click)="refresh()" style="float: right; margin-bottom: 7px; margin-right: 1%;">
+                <mat-icon>refresh</mat-icon>
+            </button>
+          </span>
+        </div>
+
+        <mat-table #table [dataSource]="dataSource" matSort class="mat-cell height-align">
+
+          <ng-container matColumnDef="prodRefId">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>Product Ref: ID</mat-header-cell>
+              <mat-cell *matCellDef="let row"> {{row.prodRefId}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="assetDesc1">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Asset Description 1</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.assetDesc1}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="assetDesc2">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Asset Description 2</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.assetDesc2}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="assetSubType">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Asset Sub Type</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.assetSubType}}</mat-cell>
+          </ng-container>
+          
+          
+          <ng-container matColumnDef="bookAmt">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Book Amount</mat-header-cell>
+            <mat-cell *matCellDef="let row" class="mat-numaric-cell-align-center"> {{row.bookAmt}}</mat-cell>
+          </ng-container>
+
+          
+          <ng-container matColumnDef="branchCode">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Branch Name</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.branchCode}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="vendorName">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Vendor Name</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.vendorName}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="inputUser">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Input User ID</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.inputUser}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="tnxStatusCode">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.tnxStatusCode === '01' ? 'Pending' : row.tnxStatusCode === '02' ? 'Complete' : 'Approved'}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+              <mat-header-cell *matHeaderCellDef>{{subMenuModuleName}}</mat-header-cell>
+
+              <!-- routerLink="../update/existing/{{row}} -->
+            <mat-cell *matCellDef="let row; let i=index;">
+              <button *ngIf="!row.register && !row.draft && !row.amend && !row.amendApprove && menuModuleName === 'Update' && subMenuModuleName !== 'Approve'" mat-icon-button  (click)="updateFixedAsset(i,row)">
+              <mat-icon aria-label="Edit" svgIcon="fam-edit"></mat-icon>
+            </button>
+            <button *ngIf="menuModuleName === 'Dispose' && !row.register && !row.draft && !row.amend && !row.amendApprove" mat-icon-button  (click)="disposeFixedAsset(i,row)">
+              <mat-icon aria-label="Dispose" svgIcon="dispose-idle"></mat-icon>
+            </button>
+            <!-- <button *ngIf="row.register || (menuModuleName === 'Update' && subMenuModuleName === 'Approve')" mat-icon-button color="accent" (click)="approveFixedAsset(i,row)">
+                <mat-icon aria-label="Approve" svgIcon="fam-approve">approve</mat-icon>
+            </button> -->
+             <button *ngIf="(menuModuleName === 'Update' && subMenuModuleName === 'Approve')" mat-icon-button color="accent" (click)="updateFixedAsset(i,row)">
+                <mat-icon aria-label="Approve" svgIcon="fam-approve">approve</mat-icon>
+            </button> 
+            <button *ngIf="row.register && row.authorize" mat-icon-button color="accent" (click)="approveFixedAsset(i,row)">
+              <mat-icon aria-label="Approve" svgIcon="fam-approve">approve</mat-icon>
+            </button>
+            <mat-icon *ngIf="row.register && !row.authorize" aria-label="Approve" svgIcon="fam-approve" style="fill-opacity: 0.3; fill: grey;position:absolute;padding-left: 5px;">approve</mat-icon>
+
+            <button *ngIf="row.draft" mat-icon-button color="accent" (click)="completeFixedAsset(i,row)">
+                <mat-icon aria-label="Complete" svgIcon="fam-edit">Complete</mat-icon>
+            </button>            
+
+            <button *ngIf="row.amend" mat-icon-button color="accent" (click)="amendRequestFixedAsset(i,row)">
+              <mat-icon aria-label="Amend" svgIcon="fam-edit">Amend</mat-icon>
+            </button>
+
+            <button *ngIf="row.amendApprove && row.authorize" mat-icon-button color="accent" (click)="amendApproveFixedAsset(i,row)">
+              <mat-icon aria-label="Approve" svgIcon="fam-approve">Approve</mat-icon>
+            </button>
+            <mat-icon *ngIf="row.amendApprove && !row.authorize" aria-label="Approve" svgIcon="fam-approve" style="fill-opacity: 0.3; fill: grey;position:absolute;padding-left: 5px;">Approve</mat-icon>
+            <!-- <button mat-icon-button    (click)="">
+              <mat-icon aria-label="Approve" svgIcon="fam-approve"></mat-icon>
+            </button> -->
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+
+
+        <div class="no-results" [style.display]="dataSource.renderedData.length == 0 ? '' : 'none'">
+          No results
+        </div>
+
+        <mat-paginator #paginator [length]="dataSource.filteredData.length" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+        </mat-paginator>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+
+</div>

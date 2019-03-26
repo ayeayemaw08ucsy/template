@@ -1,0 +1,55 @@
+<div class="container mat-elevation-z2">
+  <mat-tab-group dynamicHeight>
+
+    <mat-tab label="Bulk Upload">
+      <div class="form" style="background-color: #1789ea; padding-bottom: 8px; margin-bottom: 10px;">
+        <span>
+          <input type="file" #fileImportInput name="File Upload" id="txtFileUpload" (change)="fileChangeListener($event)" accept=".csv" style="font-size: 16px;">
+        </span>
+        <span>
+          <button mat-raised-button (click)="upload()">
+            <mat-icon svgIcon="upload"></mat-icon> Upload
+          </button>
+        </span>
+      </div>
+      <div>
+        <table mat-table [dataSource]="csvRecords" class="mat-elevation-z8" style="width:100%">
+
+          <ng-container matColumnDef="firstName">
+            <mat-header-cell mat-header-cell *matHeaderCellDef> FirstName </mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="lastName">
+            <mat-header-cell mat-header-cell *matHeaderCellDef> LastName </mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="email">
+            <mat-header-cell mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="phoneNumber">
+            <mat-header-cell mat-header-cell *matHeaderCellDef> Phone number </mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let element"> {{element.phoneNumber}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="title">
+            <mat-header-cell mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="occupation">
+            <mat-header-cell mat-header-cell *matHeaderCellDef> Occupation </mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let element"> {{element.occupation}} </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="userColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: userColumns;"></mat-row>
+        </table>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

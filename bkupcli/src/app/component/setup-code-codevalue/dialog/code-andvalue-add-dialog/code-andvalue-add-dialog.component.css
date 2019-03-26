@@ -1,0 +1,55 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-width: 450px;
+}
+
+.container>* {
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  padding-top: 6px;
+}
+
+mat-form-field {
+  font-size: 16px;
+  flex-grow: 1;
+}
+
+.container {
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+}
+
+.mat-form-field {
+  font-size: 16px;
+  flex-grow: 1;
+}
+
+.mat-dialog-content {
+  display: block;
+  margin: 0 0px !important;
+  padding: 0 0px !important;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  min-width: 500px;
+}
+
+.form[_ngcontent-c31] {
+  display: flex;
+  padding-top: 0px !important;
+}
+
+.mat-form-field {
+  font-size: 16px !important;
+  flex-grow: 1 !important;
+  text-align: -webkit-center;
+}
+
+.mat-dialog-actions {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #f0f6f9;
+}

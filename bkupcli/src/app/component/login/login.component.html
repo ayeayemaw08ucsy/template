@@ -1,0 +1,80 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row style="height: 10px;background-color: #1789ea;"></mat-toolbar-row>
+  <mat-toolbar-row class="header-color" style="background-color: #d9ebfd;">
+    <span class="title-center">
+      <img src="assets/BBI_LOGO.png">
+    </span>
+  </mat-toolbar-row>
+  <mat-toolbar-row style="height: 4px;background-color: #cce5fd;"></mat-toolbar-row>
+</mat-toolbar>
+
+<div class="div-container">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="example-form">
+    <div class="fam-header2">
+      <span class="login-text">Login</span>
+    </div>
+    <div class="fam-header">
+      <span class="login-text">Fixed Asset Management System</span>
+    </div>
+    <div class="row">
+      <div style="width:50%;">
+        <img src="assets/Demo.png" style="display:block;
+    margin:auto;margin-top: 60px;width: 150px;">
+    
+      </div>
+      <div class="vl"></div>
+      <div class="login-text">
+
+        <table class="full-width" cellspacing="0" style="margin-top: 60px;margin-bottom: 15px;">
+          <tr>
+            <td>
+              <label style="margin-right: 30px;">Entity </label>
+            </td>
+            <td>
+              <mat-form-field style="width: 350px;">
+                <input matInput type="text" class="form-control" formControlName="entity" id="entity" autocomplete="off">
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label style="margin-right: 30px;">User Name </label>
+            </td>
+            <td>
+              <mat-form-field style="width: 350px;">
+                <input matInput type="text" class="form-control" formControlName="username" id="username" autocomplete="off">
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label style="margin-right: 30px;">Password </label>
+            </td>
+            <td>
+              <mat-form-field style="width: 350px;">
+                <input matInput type="password" class="form-control" formControlName="password" id="pwd" autocomplete="off">
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+        <!-- <mat-card-actions>
+          <button [disabled]="loginForm.invalid" mat-raised-button color="primary" style="color:#636363;">
+            <mat-icon svgIcon="login"></mat-icon> Login </button>
+        </mat-card-actions> -->
+        <div *ngIf="invalidLogin" class="error">
+          <div>Invalid credentials.</div>
+        </div>
+
+      </div>
+    </div>
+    <div class="login-footer">
+      <span class="login-text">
+            
+            <button type="submit" mat-raised-button style="color:#636363; float:right; margin: 3px ;" [disabled]="loginForm.invalid">
+               <mat-icon svgIcon="login"></mat-icon>&nbsp;&nbsp;&nbsp;&nbsp;Login</button>
+                
+      </span>
+    </div>
+  </form>
+  <div style="margin-top: -39px;"><button mat-raised-button (click)="request()">Reset Password Request</button></div>
+</div>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="35.143" height="38" viewBox="0 0 35.143 38">
+  <defs>
+    <filter id="Rectangle_1753" x="0" y="0" width="35.143" height="38" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_4636" data-name="Group 4636" transform="translate(-8896 -7408)">
+    <g transform="matrix(1, 0, 0, 1, 8896, 7408)" filter="url(#Rectangle_1753)">
+      <rect id="Rectangle_1753-2" data-name="Rectangle 1753" width="17.143" height="20" rx="8" transform="translate(9 6)" fill="#fff"/>
+    </g>
+    <path id="Icon" d="M135.818,261.286l2.727,1.169-2.727,1.169,2.727,1.169-7.273,3.117L124,264.792l2.727-1.169L124,262.455l2.727-1.169L124,260.117,131.273,257l7.273,3.117ZM126,260.117l5.273,2.26,5.273-2.26-5.273-2.26Zm5.273,4.6,5.273-2.26-1.727-.7-3.545,1.481-3.545-1.481-1.727.7Zm5.273.078-1.727-.7-3.545,1.48-3.545-1.48-1.727.7,5.273,2.26Z" transform="translate(8782.818 7161.545)" fill="#606060"/>
+  </g>
+</svg>

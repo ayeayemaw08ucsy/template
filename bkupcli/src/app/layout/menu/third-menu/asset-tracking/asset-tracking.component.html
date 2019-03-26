@@ -1,0 +1,21 @@
+<nav mat-tab-nav-bar  *ngIf="currentMenuName === 'Asset Tracking'">
+    <a mat-tab-link (click)="ngOnInit()"
+       *ngFor="let link of  trackNavLinks"
+       [routerLink]="[link.path]"
+       routerLinkActive #rla="routerLinkActive"
+       [active]="rla.isActive" class="tablink">
+      <mat-icon svgIcon="{{link.icon}}"></mat-icon>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{link.label}}
+    </a>
+  </nav> 
+
+  <nav mat-tab-nav-bar  *ngIf="currentMenuName === 'Archive'">
+    <a mat-tab-link (click)="ngOnInit()"
+       *ngFor="let link of  archiveNavLinks"
+       [routerLink]="[link.path]"
+       routerLinkActive #rla="routerLinkActive"
+       [active]="rla.isActive" class="tablink">
+      <mat-icon svgIcon="{{link.icon}}"></mat-icon>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{link.label}}
+    </a>
+  </nav> 

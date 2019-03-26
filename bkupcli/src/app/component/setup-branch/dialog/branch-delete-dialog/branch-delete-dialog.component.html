@@ -1,0 +1,79 @@
+<div class="container">
+   <div id="banner" class="dialog-header">
+    <p><b>Branch</b></p>
+  </div>
+  <form class="mat-dialog-content" (ngSubmit)="submit()" #formControl="ngForm">
+   <table>
+      <tr>
+          <td class="tb-spacing">
+              <mat-label >Branch Name (1)</mat-label>
+          </td>
+          <td>
+              <mat-form-field color="accent" class="spacing">
+                <input matInput #inputstate class="form-control" disabled [(ngModel)]="data.name1" name="name1" maxlength="35" required>
+              </mat-form-field>
+          </td>
+          <td>
+              <mat-label>Branch Name (2)</mat-label>
+          </td>
+          <td>
+              <mat-form-field color="accent" class="spacing">
+                <input matInput #inputstate class="form-control" disabled  [(ngModel)]="data.name2" name="name2" maxlength="35" required>
+              </mat-form-field>
+          </td>
+      </tr>
+      <tr>
+          <td class="tb-spacing" style="padding-bottom: 12px;">
+              <mat-label >Address</mat-label>
+          </td>
+          <td>
+              <mat-form-field color="accent" class="spacing">
+                <textarea matInput #inputstate class="form-control" disabled [(ngModel)]="data.address" name="address" maxlength="255" required></textarea>
+              </mat-form-field>
+          </td>
+          <td>
+              <mat-label >Pin Code</mat-label>
+          </td>
+          <td>
+              <mat-form-field color="accent" class="spacing">
+                <input matInput #inputstate class="form-control" disabled [(ngModel)]="data.pinCode" name="pinCode" maxlength="8" required>
+              </mat-form-field>
+          </td>
+      </tr>
+      <tr>
+          <td class="tb-spacing">
+              <mat-label >Country</mat-label>
+          </td>
+          <td>
+              <mat-form-field color="accent" class="spacing">
+                <input matInput #inputstate class="form-control" disabled [(ngModel)]="data.country" name="country" required>
+              </mat-form-field>
+          </td>
+          <td>
+              <mat-label >Region</mat-label>
+          </td>
+          <td>
+              <mat-form-field color="accent" class="spacing">
+                <input matInput #inputstate class="form-control" disabled [(ngModel)]="data.region" name="region" required>
+              </mat-form-field>
+          </td>
+      </tr>
+      <tr>
+          <td class="tb-spacing">
+              <mat-label >Branch ID</mat-label>
+          </td>
+          <td>
+              <mat-form-field color="branchSeqId" class="spacing">
+              <input matInput #inputstate class="form-control" [(ngModel)]="data.branchSeqId" name="branchSeqId" disabled required>
+            </mat-form-field>
+          </td>
+      </tr>
+    </table>
+  </form>
+  <div id="btn-panel" mat-dialog-actions>  
+      <div style="justify-content: center; align-items: center; display: flex;">
+      <button mat-raised-button [type]="submit" [mat-dialog-close]="1" (click)="confirmDelete()">Delete</button>
+      <button mat-raised-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+      </div>  
+  </div>
+</div>

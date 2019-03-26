@@ -1,0 +1,98 @@
+<div class="container mat-elevation-z2">
+
+  <mat-tab-group dynamicHeight>
+    <mat-tab label="Depreciation Policy">
+      <div>
+        <div class="form" style="background-color: #1789ea;min-height: 35px!important;max-height: 35px!important;">
+          <!-- <mat-form-field floatPlaceholder="never" >
+            <input matInput #filter placeholder="Filter Asset Type, Asset Sub Type and Depreciation Method ">
+          </mat-form-field>
+          <button mat-icon-button (click)="refresh()">
+            <mat-icon>refresh</mat-icon>
+          </button> -->
+          <span class="right">
+            <label style="color: #ffffff; font-size: 14px;">Search</label>
+            <input class="filter" #filter placeholder="Asset Type, Asset Sub Type and Depreciation Method ">
+            <button mat-icon-button (click)="refresh()" style="float: right; margin-bottom: 7px; margin-right: 1%;">
+                <mat-icon>refresh</mat-icon>
+            </button>
+          </span>
+        </div>
+
+        <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+
+          <!-- <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Tnx ID</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.depPloicyTnxSeqId}}</mat-cell>
+          </ng-container> -->
+
+          <ng-container matColumnDef="assetType">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Asset Type</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.assetTypeCodeValueDesc}}</mat-cell>
+            <!-- <mat-cell *matCellDef="let row"> {{row.assetType}}</mat-cell> -->
+          </ng-container>
+
+          <ng-container matColumnDef="assetSubType">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Asset Sub Type</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.assetSubTypeCodeValueDesc}}</mat-cell>
+            <!-- <mat-cell *matCellDef="let row"> {{row.assetSubType}}</mat-cell> -->
+          </ng-container>
+
+          <ng-container matColumnDef="depMethod">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Method</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.depMethod}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="depRate">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Rate</mat-header-cell>
+            <mat-cell *matCellDef="let row" class="mat-numaric-cell-align-center"> {{row.depRate}} %</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="depCollFrequency">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Collection Frequency</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.depCollFrequency === 'M' ? 'Monthly' : row.depCollFrequency === 'Q' ? 'Quarterly' : row.depCollFrequency === 'Y' ? 'Yearly' : row.depCollFrequency === 'H' ? 'Halfyearly' : '' }}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="depUsefulLife">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Useful Life (Y)</mat-header-cell>
+            <mat-cell *matCellDef="let row" class="mat-numaric-cell-align-center"> {{row.depUsefulLife}}</mat-cell>
+          </ng-container>
+          <!-- <ng-container matColumnDef="date">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Created Date</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.business_date | date : shortDate}}</mat-cell>
+          </ng-container> -->
+          <!-- actions -->
+          <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef style="border-right: none !important;">
+             Edit
+            </mat-header-cell>
+
+            <mat-cell *matCellDef="let row; let i=index;">
+              <button mat-icon-button  (click)="editData(i,row.depPloicyTnxSeqId,row.assetType,row.assetSubType,row.depMethod,row.depRate,row.depCollFrequency,row.depUsefulLife,row.depreciation,row.depPolicySeqId)">
+                <mat-icon aria-label="Edit" svgIcon="fam-edit"></mat-icon>
+              </button>
+
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+
+
+        <div class="no-results" [style.display]="dataSource.renderedData.length == 0 ? '' : 'none'">
+          No results
+        </div>
+
+        <mat-paginator #paginator [length]="dataSource.filteredData.length" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+        </mat-paginator>
+      </div>
+      <div style="text-align: end;padding-bottom: 5px;padding-top: 5px; padding-right: 10px;background-color: #f0f6f9;">
+        <button mat-raised-button (click)="addNew(addNewDepreciationTnx)">
+          <mat-icon svgIcon="fam-edit"></mat-icon> Add New
+        </button>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+
+</div>

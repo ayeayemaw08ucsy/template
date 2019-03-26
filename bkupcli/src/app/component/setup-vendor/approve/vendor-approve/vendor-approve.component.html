@@ -1,0 +1,86 @@
+<div class="container mat-elevation-z2">
+
+    <mat-tab-group dynamicHeight>
+      <mat-tab label="Approval">
+<div>
+    <div class="form" style="background-color: #1789ea;min-height: 35px!important;max-height: 35px!important;">
+        <span class="right">
+            <label style="color: #ffffff; font-size: 14px;">Search</label>
+            <input class="filter" #filter placeholder="Vendor Code, Short Description and Long Description">
+            <button mat-icon-button (click)="refresh()" style="float: right; margin-bottom: 7px; margin-right: 1%;">
+                <mat-icon>refresh</mat-icon>
+            </button>
+        </span>
+    </div>
+
+    <mat-table #table [dataSource]="dataSource" matSort class="mat-cell height-align" style="overflow-y:auto;">
+
+    <ng-container matColumnDef="vendorCode">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Code</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.vendorCode}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="name1">
+        <mat-header-cell *matHeaderCellDef mat-sort-header >Name</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.name1}}</mat-cell>
+    </ng-container>
+    
+   <!-- <ng-container matColumnDef="vendorDesc">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Description</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.vendorDesc}}</mat-cell>
+    </ng-container> -->
+
+    
+
+    <ng-container matColumnDef="address">
+        <mat-header-cell *matHeaderCellDef mat-sort-header >Address</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.address}}</mat-cell>
+    </ng-container>
+
+   <!--  <ng-container matColumnDef="phone">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Phone</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.phone}}</mat-cell>
+    </ng-container> -->
+
+    <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.email}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="country">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Country</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.country}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="tnxType">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Txn</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+            <label>{{(row.tnxType === '10') ? 'New' : 'Update'}}</label>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef mat-sort-header style="border-right: none !important;">Approve</mat-header-cell>
+        <mat-cell *matCellDef="let row; let i=index;">
+        <button *ngIf="row.authorize" mat-icon-button color="accent" (click)="approve(i,row.vendorTnxSeqId,row.vendorCode,row.vendorDesc,row.name1,row.name2,row.address,row.pinCode,row.phone,row.email,row.country,row.tnxType,row.activeStatus)">
+            <mat-icon aria-label="Approve" svgIcon="fam-approve">approve</mat-icon>
+        </button>
+        <mat-icon *ngIf="!row.authorize" aria-label="Approve" svgIcon="Approve-inactive">approve</mat-icon>
+        </mat-cell>
+    </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <div class="no-results" [style.display]="dataSource.renderedData.length == 0 ? '' : 'none'">
+    No results
+    </div>
+
+    <mat-paginator #paginator [length]="dataSource.filteredData.length" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+    </mat-paginator>
+
+</div>
+</mat-tab>
+</mat-tab-group>
+</div>
+

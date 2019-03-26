@@ -1,0 +1,454 @@
+<div class="container mat-elevation-z2">
+  <div class="form" style="background-color: #f0f6f9;min-height: 33px!important;padding-top: 1px;">
+        <div>
+      <label class="canvas-title">{{menuModuleName}} Assets</label>
+      </div>
+      <div>
+    </div>
+    </div> 
+    <div>
+      <div class="form" style="background-color: #1789ea;min-height: 35px!important;max-height: 35px!important;">
+        <span style="color: #fff;font-size: 14px;">
+          <label style="margin-right: 5px;">Entity ID : </label>
+          <label style="margin-right: 25px;">{{fixedAssetMst.entity}}</label>
+          <label style="margin-right: 5px;"> Product Ref :</label>
+          <label style="margin-right: 5px;">{{fixedAssetMst.prodRefId}}</label>
+        </span>
+      </div>
+  <form class="mat-dialog-content" #formControl="ngForm">
+    <table>
+      <tr>
+        <td>
+          <div class="chk_column">
+            <mat-checkbox class="example-margin" (change)="OnChange($event)" [(checked)]="IsChecked" [labelPosition]="LabelAlign"
+              [disabled]="IsDisabled">Asset Tracking</mat-checkbox>
+          </div>
+        </td>
+        <td>
+          <div class="table1_label-column">
+            <mat-label>Active Flag</mat-label>
+          </div>
+          <div class="data-column">
+            <mat-form-field>
+              <input matInput #inputstate class="form-control" [(ngModel)]="fixedAssetMst.archiveFlag" name="archiveFlag" [disabled]="isDisposeField" maxlength="4" required>
+              <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+            </mat-form-field>
+          </div>
+        </td>
+        <td>
+          <div class="table1_label-column">
+            <mat-label>Disposal Date</mat-label>
+          </div>
+          <div class="data-column">
+            <!-- <mat-form-field>
+              <input matInput #inputstate class="form-control" [(ngModel)]="fixedAssetMst.disposalDate" name="disposalDate" [disabled]="isDisposeField" required>
+              <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+            </mat-form-field> -->
+            <mat-form-field>
+                <input matInput [matDatepicker]="disposalDate" [value]="dpDate"  [(ngModel)]="dpDate" name="disposalDate" class="dt_picker" disabled>
+                <mat-datepicker-toggle matSuffix [for]="disposalDate"></mat-datepicker-toggle>
+                <mat-datepicker #disposalDate></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </td>
+        <td>
+          <div class="table1_label-column">
+            <mat-label>Dispose Type</mat-label>
+          </div>
+          <div class="data-column">
+            <!-- <mat-form-field>
+              <input matInput #inputstate class="form-control" [(ngModel)]="fixedAssetMst.disposeType" name="disposeType" [disabled]="isDisposeField" >
+              <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+            </mat-form-field> -->
+            <mat-form-field>
+                <mat-select [(ngModel)]="selectedDisposeType" name="disposeType"  [ngModelOptions]="{standalone: true}"  [disabled]="isDisposeField">
+                   <mat-option *ngFor="let d of disposeTypeLst" [value]="d.codeValue">{{d.shortDesc}}</mat-option>
+                   <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+                </mat-select>
+            </mat-form-field>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td>
+          <div class="table2_label_column">
+            <mat-label>Transaction Currency</mat-label>
+          </div>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput #inputstate class="form-control" [(ngModel)]="fixedAssetMst.tnxCurrency" name="tnxCurrency" disabled
+              maxlength="4" required>
+            <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+          </mat-form-field>
+        </td>
+        <td>
+          <div class="table2_label_column">
+            <mat-label>Transaction Amount</mat-label>
+          </div>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput type="number" #inputstate class="form-control" [(ngModel)]="fixedAssetMst.tnxAmount" name="tnxAmount" [disabled]="isAmendField" pattern="^\d*\.?\d{1,2}$"
+              maxlength="255" required>
+            <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+          </mat-form-field>
+        </td>
+        <td>
+          <div class="table2_label_column">
+            <mat-label>Asset Type</mat-label>
+          </div>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput #inputstate class="form-control" [(ngModel)]="fixedAssetMst.assetType" name="assetType" disabled
+              maxlength="255" required>
+            <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+          </mat-form-field>
+        </td>
+        <td>
+          <div class="table2_label_column">
+            <mat-label>Asset Sub Type</mat-label>
+          </div>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput #inputstate class="form-control" [(ngModel)]="fixedAssetMst.assetSubType" name="assetSubType" disabled
+              maxlength="255" required>
+            <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="table2_label_column">
+            <mat-label>Book Currency</mat-label>
+          </div>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput #inputstate class="form-control" [(ngModel)]="fixedAssetMst.bookCurrency" name="bookCurrency" disabled
+               required>
+            <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+          </mat-form-field>
+        </td>
+        <td>
+          <div class="table2_label_column">
+            <mat-label>Book Amount</mat-label>
+          </div>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput type="number" #inputstate class="form-control" [(ngModel)]="fixedAssetMst.bookAmt" name="bookAmt" value="{{fixedAssetMst.tnxAmount}}" disabled pattern="^\d*\.?\d{1,2}$"
+              required type="number">
+            <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+          </mat-form-field>
+        </td>
+        <td>
+          <div class="table2_label_column">
+            <mat-label>Depreciation Method</mat-label>
+          </div>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput #inputstate class="form-control" [(ngModel)]="fixedAssetMst.depMethod" name="depMethod" disabled
+              maxlength="20" required>
+            <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+          </mat-form-field>
+        </td>
+        <td>
+          <div class="table2_label_column">
+            <mat-label>Depreciation Rate</mat-label>
+          </div>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput type="number" #inputstate class="form-control" [(ngModel)]="fixedAssetMst.depRate" name="depRate" disabled
+              required>
+            <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="table2_label_column">
+            <mat-label>Residual Currency</mat-label>
+          </div>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput #inputstate class="form-control" [(ngModel)]="fixedAssetMst.residualCurrency" [disabled]="isAmendField" name="residualCurrency">
+            <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+          </mat-form-field>
+        </td>
+        <td>
+          <div class="table2_label_column">
+            <mat-label>Residual Amount</mat-label>
+          </div>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput type="number" #inputstate class="form-control" [(ngModel)]="fixedAssetMst.residualValue" [disabled]="isAmendField" min="0" max="fixedAsset.tnxAmount"
+             pattern="^\d*\.?\d{1,2}$" name="residualValue" required>
+            <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+          </mat-form-field>
+        </td>
+        <td>
+          <div class="table2_label_column">
+            <mat-label>Depreciation Collection Frequency</mat-label>
+          </div>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput #inputstate class="form-control" [(ngModel)]="fixedAssetMst.depCollFreq" name="depCollFreq" disabled >
+            <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+          </mat-form-field>
+        </td>
+        <td>
+          <div class="table2_label_column">
+            <mat-label>Depreciation Useful Life</mat-label>
+          </div>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput type="number" #inputstate class="form-control" [(ngModel)]="fixedAssetMst.depCollFreq" name="depCollFreq" disabled >
+            <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="table2_label_column">
+            <label>Exchange Rate</label>
+          </div>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput type="number" #inputstate class="form-control" [(ngModel)]="fixedAssetMst.exchRate" name="exchRate" disabled>
+            <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+          </mat-form-field>
+        </td>
+        <td>
+          <div class="table2_label_column">
+            <mat-label>Asset Quantity</mat-label>
+          </div>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput type="number" #inputstate class="form-control" onkeypress="javascript: return event.keyCode == 45 ? false : true" [(ngModel)]="fixedAssetMst.assetQuantity" [disabled]="isUpdateField"
+              name="assetQuantity" required>
+            <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+          </mat-form-field>
+        </td>
+        <td>
+          <div class="table2_label_column">
+            <mat-label>Accumulated Depreciation</mat-label>
+          </div>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput #inputstate class="form-control" [(ngModel)]="fixedAssetMst.accumDepAmt" name="accumDepAmt" disabled >
+            <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+          </mat-form-field>
+        </td>
+        <td>
+          <div class="table2_label_column">
+            <mat-label>Net Asset Value</mat-label>
+          </div>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput type="number" #inputstate class="form-control" [(ngModel)]="fixedAssetMst.netAssetAmount" name="netAssetAmount" disabled>
+            <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+          </mat-form-field>
+        </td>
+      </tr>
+      <!-- <tr>
+        <td>
+          <div class="table2_label_column">
+            <mat-label>Exchange Rate</mat-label>
+          </div>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput type="number" #inputstate class="form-control" [(ngModel)]="fixedAssetMst.exchRate" name="exchRate" disabled="isDisabledField"
+              required>
+            <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+        </td>
+        <td>
+          <div class="table2_label_column">
+            <mat-label>Asset Quantity</mat-label>
+          </div>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput type="number" #inputstate class="form-control" [(ngModel)]="fixedAssetMst.assetQuantity"
+              name="assetQuantity" required>
+            <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+        </td>
+        <td>
+          <div class="table2_label_column">
+            <mat-label>Accumulated Depreciation</mat-label>
+          </div>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput #inputstate class="form-control" [(ngModel)]="fixedAssetMst.accumDepAmt" name="accumDepAmt" disabled="isDisabledField"
+              required>
+            <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+        </td>
+        <td>
+          <div class="table2_label_column">
+            <mat-label>Net Asset Value</mat-label>
+          </div>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput type="number" #inputstate class="form-control" [(ngModel)]="fixedAssetMst.netAssetAmount" disabled="isDisabledField"
+              name="netAssetAmount" required>
+            <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+        </td>
+      </tr> -->
+
+      <tr>
+        <td>
+          <div class="table2_label_column">
+            <mat-label>Purchase Date</mat-label>
+          </div>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput [matDatepicker]="purchaseDate" [value]="myDate"  [(ngModel)]="myDate" name="purchaseDate" class="dt_picker" disabled>
+            <mat-datepicker-toggle matSuffix [for]="purchaseDate"  style="margin-left: -15px;"></mat-datepicker-toggle>
+            <mat-datepicker #purchaseDate></mat-datepicker>
+          </mat-form-field>
+        </td>
+        <td>
+          <div class="table2_label_column">
+            <mat-label>Last Collection Date</mat-label>
+          </div>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput #inputstate class="form-control" [(ngModel)]="fixedAssetMst.lastCollectionDate" name="lastCollectionDate" disabled >
+            <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+          </mat-form-field>
+        </td>
+        <td>
+          <div class="table2_label_column">
+            <mat-label>Periodic Depreciation</mat-label>
+          </div>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput #inputstate class="form-control" [(ngModel)]="fixedAssetMst.periodicDepreciationAmt" name="periodicDepreciationAmt" disabled >
+            <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+          </mat-form-field>
+        </td>
+        <td>
+          <div class="table2_label_column">
+            <mat-label>Depreciation Sequence</mat-label>
+          </div>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput type="number" #inputstate class="form-control" [(ngModel)]="fixedAssetMst.depSequence" name="depSequence" disabled >
+            <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+          </mat-form-field>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <div class="table2_label_column">
+            <mat-label>Asset Description 1</mat-label>
+          </div>
+        </td>
+        <td>
+          <mat-form-field>
+            <textarea matInput #inputstate class="form-control" [(ngModel)]="fixedAssetMst.assetDesc1" name="assetDesc1" [disabled]="isUpdateField"
+              maxlength="255" ></textarea>
+            <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+          </mat-form-field>
+        </td>
+        <td>
+          <div class="table2_label_column">
+          </div>
+        </td>
+        <td></td>
+        <td>
+          <div class="table2_label_column">
+          </div>
+        </td>
+        <td></td>
+        <td>
+          <div class="table2_label_column">
+          </div>
+
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>
+          <div class="table2_label_column">
+            <mat-label>Asset Description 2</mat-label>
+          </div>
+        </td>
+        <td>
+            <mat-form-field>
+              <textarea matInput #inputstate class="form-control" [(ngModel)]="fixedAssetMst.assetDesc2" name="assetDesc2" [disabled]="isUpdateField"
+                maxlength="255"></textarea>
+              <mat-error *ngIf="formControl.invalid">{{getErrorMessage('')}}</mat-error>
+            </mat-form-field>
+        </td>
+        <td>
+            <div class="table2_label_column">
+            </div>
+          </td>
+          <td></td>
+          <td>
+            <div class="table2_label_column">
+            </div>
+          </td>
+          <td></td>
+          <td>
+            <div class="table2_label_column">
+            </div>
+  
+          </td>
+        <td></td>
+      </tr>
+    </table>
+    <div class="fixedasset-btn-layout">
+      <div style="float: left">
+        <button mat-raised-button tabindex="-1" (click)="deleteEntry()" class="btn-left" *ngIf=" menuModuleName !== 'Dispose' && subMenuModuleName !== 'Approve' && fixedAssetStatus !== 'Approval'   && (moduleName !== 'Amend' && moduleName !== 'Register')">
+          <mat-icon aria-label="Save Draft" svgIcon="faDeleteEntry"></mat-icon>Delete Update Entry
+        </button>
+        <button mat-raised-button tabindex="-1" (click)="deleteEntry()" class="btn-left" *ngIf=" menuModuleName !== 'Update' && subMenuModuleName !== 'Approve' && fixedAssetStatus !== 'Approval'   && (moduleName !== 'Amend' && moduleName !== 'Register')">
+          <mat-icon aria-label="deleteDisposeEntry" svgIcon="faDeleteEntry"></mat-icon>Delete Dispose Entry
+        </button>
+        <button mat-raised-button tabindex="-2" (click)="back()" class="btn-back">
+          <mat-icon aria-label="Back" svgIcon="faBack"></mat-icon>Back
+        </button>
+      </div>
+      <div style="float: right;">
+        <button mat-raised-button tabindex="-1" (click)="saveDraft()" class="btn-right" *ngIf="menuModuleName !== 'Dispose' && subMenuModuleName !== 'Approve' && fixedAssetStatus !== 'Approval' && (moduleName !== 'Amend' && moduleName !== 'Register')">
+          <mat-icon aria-label="Save Draft" svgIcon="faSaveDraft"></mat-icon>Save Draft
+        </button>
+        <!-- <button mat-raised-button tabindex="-1" (click)="saveDraftDispose()" class="btn-right" *ngIf="menuModuleName === 'Dispose'  && (menuModuleName !== 'Amend' && menuModuleName !== 'Register' && menuModuleName !== 'Amend Approval')">
+          <mat-icon aria-label="Save Draft" svgIcon="faSaveDraft"></mat-icon>Save Draft
+        </button> -->
+        <button mat-raised-button (click)="goToNextPage3()" class="btn-right">
+          <mat-icon aria-label="Next" svgIcon="faNext"></mat-icon>Next
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+</div>

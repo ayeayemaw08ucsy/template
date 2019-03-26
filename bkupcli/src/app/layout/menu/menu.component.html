@@ -1,0 +1,47 @@
+<mat-tab-group (selectedTabChange)="onTabClick($event)">
+  <mat-tab>
+    <ng-template mat-tab-label>
+        <div *ngIf="parentMessage === 0"><mat-icon svgIcon="fixedAssetActive"></mat-icon> Fixed Asset</div>
+        <div *ngIf="parentMessage !== 0"><mat-icon svgIcon="fixedAsset"></mat-icon> Fixed Asset</div>
+    </ng-template>
+    <div>
+        <app-fixed-asset></app-fixed-asset>
+    </div>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+        <div *ngIf="parentMessage === 1"><mat-icon svgIcon="batchProcessActive"></mat-icon>&nbsp; Batch Processing</div>
+        <div *ngIf="parentMessage !== 1"><mat-icon svgIcon="batchProcess"></mat-icon>&nbsp; Batch Processing</div>
+    </ng-template>
+    <div>
+      <app-batch-process></app-batch-process>
+    </div>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <div *ngIf="parentMessage === 2"><mat-icon  svgIcon="appAdminActive"></mat-icon>&nbsp; Application Administration</div>
+      <div *ngIf="parentMessage !== 2"><mat-icon  svgIcon="appAdmin"></mat-icon>&nbsp; Application Administration</div>
+    </ng-template>
+    <div>
+      <app-app-admin></app-app-admin>
+    </div>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+        <div *ngIf="parentMessage === 3"><mat-icon svgIcon="graphActive"></mat-icon>&nbsp; Charts & Reports</div>
+        <div *ngIf="parentMessage !== 3"><mat-icon svgIcon="graph"></mat-icon>&nbsp; Charts & Reports</div>
+    </ng-template>
+    <div>
+      <app-chart-report></app-chart-report>
+    </div>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+        <div *ngIf="parentMessage === 4"><mat-icon svgIcon="userAdminActive"></mat-icon>&nbsp; User Administration</div>
+        <div *ngIf="parentMessage !== 4"><mat-icon svgIcon="userAdmin"></mat-icon>&nbsp; User Administration</div>
+      </ng-template>
+    <div>
+      <app-user-admin></app-user-admin>
+    </div>
+  </mat-tab>
+</mat-tab-group>

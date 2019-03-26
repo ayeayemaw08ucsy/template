@@ -1,0 +1,145 @@
+/* Structure */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+  margin-top: 3%;
+}
+
+/* Toolbar */
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+/* Filter */
+
+.form {
+  min-height: 56px;
+  max-height: 56px;
+  display: flex;
+  align-items: center;
+  padding: 0px 24px 0;
+  font-size: 20px;
+  justify-content: space-between;
+  border-bottom: 1px solid transparent;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  flex-grow: 1;
+  margin-top: 8px;
+}
+
+/* Mat table */
+
+.no-results {
+  display: flex;
+  justify-content: center;
+  padding: 14px;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.mat-cell:nth-child(1),
+.mat-header-cell:nth-child(1) {
+  flex: 0 0 5%;
+}
+
+.mat-cell:nth-child(2),
+.mat-header-cell:nth-child(2) {
+  flex: 0 0 30%;
+}
+
+.mat-cell:nth-child(3),
+.mat-header-cell:nth-child(3) {
+  flex: 0 0 40%;
+}
+
+.mat-cell:nth-child(4),
+.mat-header-cell:nth-child(4) {
+  flex: 0 0 25%;
+}
+
+.mat-row:nth-child(even) {
+  background-color: #f0f6f9;
+}
+
+.mat-row:nth-child(odd) {
+  background-color: #e0eef9;
+}
+
+.mat-icon-button.mat-accent,
+.mat-stroked-button.mat-accent {
+  color: #1789ea;
+}
+
+:host ::ng-deep .mat-tab-label-active {
+  color: #ffffff !important;
+  background: #1789ea !important;
+}
+
+:host ::ng-deep .mat-ink-bar {
+  height: 0px;
+}
+
+:host ::ng-deep .mat-tab-label {
+  height: 48px;
+  padding: 0 24px;
+  cursor: pointer;
+  box-sizing: border-box;
+  opacity: .6;
+  min-width: 160px;
+  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  position: relative;
+  background-color: #ffffff;
+}
+
+:host ::ng-deep .mat-tab-labels {
+  background: #f0f6f9 !important;
+  margin-top: -8px;
+}
+
+.data-column {
+  float: right;
+}
+
+.label-column {
+  float: left;
+  font-size: 13px;
+  margin-top: 13px;
+  padding-left: 10px;
+}
+
+.mat-card {
+  background: #f8fbfe;
+  color: rgba(0, 0, 0, .87);
+  margin-top: 10px;
+}
+
+.column {
+  float: left;
+  padding-right: 140px;
+}
+
+/* Clear floats after the columns */
+
+.row:after {
+  display: table;
+  clear: both;
+}
+
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  padding-left: 25px;
+}
+

@@ -1,0 +1,148 @@
+/* Structure */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+    margin-top: 3%; 
+  }
+  
+  /* Toolbar */
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
+  /* Filter */
+  
+  .form {
+    min-height: 56px;
+    max-height: 56px;
+    display: flex;
+    align-items: center;
+    padding: 0px 24px 0;
+    font-size: 20px;
+    justify-content: space-between;
+    border-bottom: 1px solid transparent;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    flex-grow: 1;
+    margin-top: 8px;
+  }
+  
+  /* Mat table */
+  
+  .no-results {
+    display: flex;
+    justify-content: center;
+    padding: 14px;
+    font-size: 14px;
+    font-style: italic;
+  }
+  
+  /* */
+  
+  :host ::ng-deep .mat-tab-label-active {
+    color: #ffffff !important;
+    background: #1789ea !important;
+  }
+  
+  :host ::ng-deep .mat-ink-bar {
+    height: 0px;
+  }
+  
+  :host ::ng-deep .mat-tab-label {
+    height: 48px;
+    padding: 0 24px;
+    cursor: pointer;
+    box-sizing: border-box;
+    opacity: .6;
+    min-width: 160px;
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    position: relative;
+    background-color: #ffffff;
+  }
+  
+  :host ::ng-deep .mat-tab-labels {
+    background: #f0f6f9 !important;
+    margin-top: -8px;
+  }
+  
+  .chk_column {
+    float: left;
+    font-size: 13px;
+    padding-left: 10px;
+    text-align: right;
+  }
+
+  .table1_label-column {
+    float: left;
+    font-size: 13px;
+    margin-top: 13px;
+    padding-left: 55px;
+    text-align: right;
+  }
+  
+  .data-column {
+    float: right;
+  }
+  .mat-card {
+    background: #f8fbfe;
+    color: rgba(0, 0, 0, .87);
+    margin-top: 10px;
+  }
+  
+  .column {
+    float: left;
+    padding-right: 140px;
+  }
+  
+  /* Clear floats after the columns */
+  
+  .row:after {
+    display: table;
+    clear: both;
+  }
+
+  .fixedasset-btn-layout {
+    text-align: end;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-right: 10px;
+    height: 40px !important;
+  }
+
+  .btn-left {
+    margin-left: 5px;
+    height: 33px !important;
+    background-color:#EA7979
+  }
+  .btn-back {
+    margin-left: 5px;
+    height: 33px !important;
+   }
+  .btn-right {
+    margin-right: 5px;
+    height: 33px !important;
+  }
+
+  .table2_label_column {
+    font-size: 13px;
+    padding-left: 3px;
+    text-align: right;
+    line-height: 15px;
+  }
+
+  .dt_picker {
+    border: 1px solid #ced4da !important;
+    border-radius: .25rem !important;min-height:28px;
+    vertical-align: baseline;
+    width: 95%;
+    margin-left: 5px;
+  }

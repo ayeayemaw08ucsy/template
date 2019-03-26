@@ -1,0 +1,139 @@
+/* Structure */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3%;
+}
+
+/* Toolbar */
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+/* Filter */
+
+.form {
+  min-height: 56px;
+  max-height: 56px;
+  display: flex;
+  align-items: center;
+  padding: 8px 24px 0;
+  font-size: 20px;
+  justify-content: space-between;
+  border-bottom: 1px solid transparent;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  flex-grow: 1;
+  margin-top: 8px;
+}
+
+/* Mat table */
+
+.no-results {
+  display: flex;
+  justify-content: center;
+  padding: 14px;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.mat-cell:nth-child(1),
+.mat-header-cell:nth-child(1) {
+  flex: 0 0 25%;
+}
+
+.mat-cell:nth-child(2),
+.mat-header-cell:nth-child(2) {
+  flex: 0 0 10%;
+}
+
+.mat-cell:nth-child(3),
+.mat-header-cell:nth-child(3) {
+  flex: 0 0 20%;
+}
+
+.mat-cell:nth-child(4),
+.mat-header-cell:nth-child(4) {
+  flex: 0 0 25%;
+}
+
+.mat-cell:nth-child(5),
+.mat-header-cell:nth-child(5) {
+  flex: 0 0 10%;
+}
+
+.mat-cell:last-child,
+.mat-header-cell:last-child {
+  flex: 0 0 10%;
+} 
+
+.mat-row:nth-child(even) {
+  background-color: #f0f6f9;
+}
+
+.mat-row:nth-child(odd) {
+  background-color: #e0eef9;
+}
+
+.mat-icon-button.mat-accent,
+.mat-stroked-button.mat-accent {
+  color: #1789ea;
+}
+
+:host ::ng-deep .mat-tab-label-active {
+  color: #ffffff !important;
+  background: #1789ea !important;
+}
+
+:host ::ng-deep .mat-ink-bar {
+  height: 0px;
+}
+
+.container[_ngcontent-c5] {
+  display: flex;
+  flex-direction: column;
+  background: #f8fbfe;
+}
+
+:host ::ng-deep .mat-tab-label {
+  height: 48px;
+  padding: 0 24px;
+  cursor: pointer;
+  box-sizing: border-box;
+  opacity: .6;
+  min-width: 160px;
+  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  position: relative;
+  background-color: #ffffff;
+}
+
+:host ::ng-deep .mat-tab-labels {
+  background: #f0f6f9 !important;
+  margin-top: -8px;
+}
+
+[_ngcontent-pmm-5] {
+  /* background-color: #EA7979; */
+  border-radius: 8px;
+  border: 4px;
+  width: 100px;
+  text-align: center;
+}
+
+[_ngcontent-pmm-6] {
+  /* background-color: #24B10B; */
+  border-radius: 15px;
+  border: 4px;
+  width: 70px;
+  text-align: center;
+  color: #fff;
+  font-weight: 500;
+}
